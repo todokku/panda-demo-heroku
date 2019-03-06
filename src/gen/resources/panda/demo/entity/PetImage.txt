@@ -1,0 +1,11 @@
+pid=Pet ID
+
+pname=Pet Name
+
+imageName=Image Name
+
+imageSize=Image Size
+
+imageFile=Image
+
+

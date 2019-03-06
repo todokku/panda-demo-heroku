@@ -1,0 +1,35 @@
+name=Name
+
+cid=Category ID
+
+cname=Category
+
+gender=Gender
+
+birthday=Brithday
+
+origin=Origin
+
+temper=Temper
+
+habits=Habits
+
+amount=Amount
+
+price=Price
+
+shopName=Shop name
+
+shopAddress=Shop address
+
+shopTelephone=Shop TEL
+
+shopCloseTime=Shop Close Time
+
+shopLink=Shop URL
+
+description=Description
+
+imageFile=Image
+
+

@@ -1,0 +1,289 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.github.pandafw</groupId>
+	<artifactId>panda-demo-heroku</artifactId>
+	<packaging>war</packaging>
+	<version>1.5.1</version>
+
+	<name>Panda Demo for Heroku</name>
+	<url>https://github.com/pandafw/panda-demo/</url>
+	<description>Panda Demo (Heroku) is a demo web application for Panda Mvc Framework run on Heroku.</description>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jdk.version>1.7</jdk.version>
+		<panda.version>1.5.1-SNAPSHOT</panda.version>
+		<log.hostname>heroku</log.hostname>
+		<log.slack.channel>#alert</log.slack.channel>
+		<log.slack.webhook>${env.LOG_SLACK_WEBHOOK}</log.slack.webhook>
+	</properties>
+
+	<build>
+		<directory>${project.basedir}/out</directory>
+		<resources>
+			<resource>
+				<directory>${project.basedir}/src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>${project.basedir}/src/main/templates</directory>
+			</resource>
+			<resource>
+				<directory>${project.basedir}/src/gen/resources</directory>
+			</resource>
+			<resource>
+				<directory>${project.basedir}/src/gen/templates</directory>
+			</resource>
+			<resource>
+				<directory>${project.basedir}/env</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.json</include>
+				</includes>
+			</resource>
+		</resources>
+
+		<plugins>
+			<!-- set JDK compiler level -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+				</configuration>
+			</plugin>
+
+			<!-- add source folder (src/gen) -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>${project.basedir}/src/gen/java</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- properties file -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>properties-maven-plugin</artifactId>
+				<version>1.0.0</version>
+				<executions>
+					<execution>
+						<phase>initialize</phase>
+						<goals>
+							<goal>read-project-properties</goal>
+						</goals>
+						<configuration>
+							<files>
+								<file>git.properties</file>
+							</files>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- war -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.1</version>
+				<configuration>
+					<webResources>
+						<resource>
+							<directory>web</directory>
+							<excludes>
+								<exclude>WEB-INF/_*</exclude>
+								<exclude>WEB-INF/_*/**</exclude>
+							</excludes>
+						</resource>
+						<resource>
+							<directory>bin</directory>
+							<targetPath>WEB-INF/bin</targetPath>
+						</resource>
+					</webResources>
+					<archiveClasses>true</archiveClasses>
+				</configuration>
+			</plugin>
+
+			<!-- change permission -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.8</version>
+				<executions>
+					<execution>
+						<id>chmod</id>
+						<phase>package</phase>
+						<configuration>
+							<target>
+								<chmod file="${project.build.directory}/${project.build.finalName}/WEB-INF/bin/wkhtmltopdf" perm="755"/>
+								<echo>${project.build.directory}/${project.build.finalName}/WEB-INF/bin/wkhtmltopdf</echo>
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- webapp runner for heroku -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>3.0.2</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>com.github.jsimone</groupId>
+									<artifactId>webapp-runner</artifactId>
+									<version>7.0.88.0</version>
+									<destFileName>webapp-runner.jar</destFileName>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<!-- Panda -->
+		<dependency>
+			<groupId>com.github.pandafw</groupId>
+			<artifactId>panda-core</artifactId>
+			<version>${panda.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.pandafw</groupId>
+			<artifactId>panda-html</artifactId>
+			<version>${panda.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.pandafw</groupId>
+			<artifactId>panda-gear</artifactId>
+			<version>${panda.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.pandafw</groupId>
+			<artifactId>panda-wear</artifactId>
+			<version>${panda.version}</version>
+		</dependency>
+
+		<!-- POI -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.13</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml-schemas</artifactId>
+			<version>3.13</version>
+		</dependency>
+
+		<!-- LUCENE -->
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-core</artifactId>
+			<version>5.5.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-queries</artifactId>
+			<version>5.5.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-queryparser</artifactId>
+			<version>5.5.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-analyzers-common</artifactId>
+			<version>5.5.5</version>
+		</dependency>
+		
+		<!-- JDBC -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.4.1209.jre6</version>
+		</dependency>
+
+		<!-- Servlet -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+			<version>2.3.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.websocket</groupId>
+			<artifactId>javax.websocket-api</artifactId>
+			<version>1.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- RUNNER -->
+		<dependency>
+			<groupId>com.github.jsimone</groupId>
+			<artifactId>webapp-runner</artifactId>
+			<version>7.0.88.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Test -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<licenses>
+		<license>
+			<name>Apache 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<id>yf.frank.wang</id>
+			<name>Frank Wang</name>
+			<email>yf.frank.wang@outlook.com</email>
+		</developer>
+	</developers>
+</project>

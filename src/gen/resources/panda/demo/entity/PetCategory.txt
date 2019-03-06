@@ -1,0 +1,7 @@
+id=Category Id
+
+name=Name
+
+memo=Memo
+
+

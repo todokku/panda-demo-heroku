@@ -1,0 +1,245 @@
+{
+	// context path
+	"admin_path": "/admin",
+	"super_path": "/super",
+	"static_path": "/static",
+	"task_path": "/task",
+
+	"files_path": "/files",
+	"media_path": "/media",
+	
+	// default resources
+	"panda.mvc.resources": [ 
+		"panda.mvc.Resource",
+		"panda.app.App",
+		"panda.demo.Application",
+		"panda.demo.AppEngine"
+	],
+
+	// database resource / template
+	"panda.database.template": true,
+	"panda.database.resource": true,
+	//"panda.database.property": true,
+
+	// runtime settings (reloadable)
+	"panda.settings.runtime.files": [ "panda-demo.properties" ],
+
+	// runtime settings reload check delay (ms) */
+	//"panda.settings.runtime.delay": 60000,
+
+	// acceptable locale array (first element is the default)
+	"panda.locale.accepts": [ "en", "ja", "zh" ],
+
+	// url action mapping ignore case (default: false)
+	"panda.action.mapping.case.ignore": true,
+
+	// cache provider: ehcache, java(default)
+	//"panda.cache.provider": "ehcache",
+
+	// ehcache name
+	//"panda.cache.name": "_default",
+
+	// cache max-age seconds (12h)
+	"panda.cache.maxage": 43200,
+	
+	// media location
+	//"panda.media.location": "${web.dir}/WEB-INF/_media",
+	
+	// lucene location
+	//"panda.lucene.location": "${web.dir}/WEB-INF/_lucene",
+	
+	// lucene analyzer
+	"panda.lucene.analyzer": "org.apache.lucene.analysis.cjk.CJKAnalyzer",
+
+	// Google Cloud Storage Bucket
+	"panda.filestore.gcs.bucket": "panda-demo.appspot.com",
+	"panda.media.gcs.bucket": "panda-demo.appspot.com",
+
+	// local filestore storage local path
+	//"panda.filestore.location": "${web.dir}/WEB-INF/_files",
+
+	// multipart max upload body size (default: 2MB)
+	"panda.multipart.body.maxsize": 10485760, // 10MB
+
+	// multipart max upload file size (default: 2MB)
+	"panda.multipart.file.maxsize": 10485760, // 10MB
+
+	// upload file maxage (second, default: 1 day)
+	//"panda.multipart.upload.maxage": 86400,
+
+	// auth
+	"panda.auth.view.unlogin": "redirect:/login/?redirect=${top}",
+	//"panda.auth.view.unsecure": "redirect:/login/?redirect=${top}",
+
+	// crypto secret key string
+	//"panda.crypto.key.secret": "== Panda Java ==",
+
+	// crypt algorithm
+	//"panda.crypto.algorithm": "AES",
+
+	// secure user age (s)
+	"panda.auth.secure.session.age": 1800,
+	
+	// auth user type
+	"panda.auth.user.type": "panda.demo.entity.User",
+
+	// auth ticket parameter name
+	//"panda.auth.ticket.param.name": "_ticket_",
+
+	// auth ticket cookie name
+	//"panda.auth.ticket.cookie.name": "WW_TICKET",
+
+	// auth ticket cookie age (60 * 60 * 24 * 7day)
+	//"panda.auth.ticket.cookie.age": 604800,
+
+	// executor settings
+	"panda.executor.enable": true,
+	//"panda.executor.name": "executor",
+	//"panda.executor.pool.size.core": 1,
+	//"panda.executor.pool.size.max": 1,
+
+	// scheduler settings
+	"panda.scheduler.enable": true,
+	//"panda.scheduler.name": "scheduler",
+	//"panda.scheduler.pool.size": 1,
+
+	// custom load task keys
+	// "panda.task.load.keys": [],
+
+	// cron
+	"panda.scheduler.crons": [{
+/*
+		"action": "/ping",
+		"description": "Execute every 5 minutes to prevent application sleep",
+		"token": true,
+		"initialDelay": 300000,
+		"fixedDelay": 300000
+	}, {
+		"action": "/task/resource/load/start",
+		"description": "Execute every 10 minutes to load resource",
+		"token": true,
+		"cron": "0 0/10 * * * *"
+	}, {
+		"action": "/task/template/load/start",
+		"description": "Execute every 10 minutes to load template",
+		"token": true,
+		"cron": "0 0/10 * * * *"
+	}, {
+*/
+		"action": "/task/logconfigure/start",
+		"description": "Execute every 30 minutes to configure logs",
+		"token": true,
+		"initialDelay": 1800000,
+		"fixedDelay": 1800000
+	}, {
+		"action": "/task/filestorecleanup/start",
+		"description": "Execute every 60 minutes to remove the upload temporary files",
+		"token": true,
+		"initialDelay": 3600000,
+		"fixedDelay": 3600000
+	}, {
+		"action": "/task/tmpfilescleanup/start",
+		"description": "Execute every 24 hours to remove the application temporary files",
+		"token": true,
+		"initialDelay": 3600000,
+		"fixedDelay": 86400000
+	}, {
+		"action": "/task/reset/start",
+		"description": "Execute every 8 hours to reset the database and index",
+		"token": true,
+		"cron": "0 0 */8 * * *"
+	}],
+
+	// sitemesh
+	"panda.sitemesh": {
+		"excludes": [],
+
+		"decorators": [{
+				"head": "x_sitemesh=false"
+			}, {
+				"para": "__mesh=false"
+			}, {
+				"para": "__inner=true",
+				"page": "/sitemesh/inner.ftl"
+			}, {
+				"para": "__pdf=true",
+				"page": "/sitemesh/pdf.ftl"
+			}, {
+				"para": "__print=true",
+				"page": "/sitemesh/print.ftl"
+			}, {
+				"para": "__popup=true",
+				"page": "/sitemesh/popup.ftl"
+			}, {
+				"path": "/.*[/_\\.]pdf",
+				"page": "/sitemesh/pdf.ftl"
+			}, {
+				"path": "/.*[/_\\.]print",
+				"page": "/sitemesh/print.ftl"
+			}, {
+				"path": "/.*[/_\\.]popup",
+				"page": "/sitemesh/popup.ftl"
+			}, {
+				"path": "/.*",
+				"page": "/sitemesh/main.ftl"
+			}
+		]
+	},
+
+	// default mvc filter
+	/*
+	"panda.mvc.filters": [
+		"#panda.mvc.filter.HttpDumpFilter",
+		"#panda.mvc.filter.DecodingFilter",
+		"#panda.mvc.filter.LoggingFilter",
+		"#panda.mvc.filter.DispatchFilter"
+	],
+	*/
+
+	// default mvc chains
+	/*
+	"panda.mvc.chains": {
+		"default": [
+			"'#panda.mvc.processor.FatalProcessor",
+			"'#panda.mvc.processor.RedirectProcessor",
+			"'#panda.mvc.processor.LocaleProcessor",
+			"'#panda.mvc.processor.LayoutProcessor",
+			"'#panda.mvc.processor.AuthenticateProcessor",
+			"'#panda.mvc.processor.AdaptProcessor",
+			"'#panda.mvc.processor.PrepareProcessor",
+			"'#panda.mvc.processor.TokenProcessor",
+			"'#panda.mvc.processor.ValidateProcessor",
+			"'#panda.mvc.processor.InvokeProcessor",
+			"'#panda.mvc.processor.ViewProcessor"
+		]
+	},
+	*/
+
+	// default mvc views
+	/*
+	"panda.mvc.views" : {
+		"alt": 		"'#panda.mvc.view.AltView",
+		"~>": 		"'#panda.mvc.view.AltView",
+		"redirect": "'#panda.mvc.view.RedirectView",
+		">>": 		"'#panda.mvc.view.RedirectView",
+		"forward": 	"'#panda.mvc.view.ForwardView",
+		"->": 		"'#panda.mvc.view.ForwardView",
+		"sc": 		"'#panda.mvc.view.HttpStatusView",
+		"err": 		"'#panda.mvc.view.ServletErrorView",
+		"raw": 		"'#panda.mvc.view.DataView",
+		"csv": 		"'#panda.mvc.view.CsvView",
+		"tsv": 		"'#panda.mvc.view.TsvView",
+		"xls": 		"'#panda.mvc.view.XlsView",
+		"xlsx": 	"'#panda.mvc.view.XlsxView",
+		"json": 	"'#panda.mvc.view.JsonView",
+		"xml": 		"'#panda.mvc.view.XmlView",
+		"jsp": 		"'#panda.mvc.view.JspView",
+		"sjsp": 	"'#panda.mvc.view.SitemeshJspView",
+		"ftl": 		"'#panda.mvc.view.FreemarkerView",
+		"sftl": 	"'#panda.mvc.view.SitemeshFreemarkerView",
+		"void": 	"'#panda.mvc.view.VoidView",
+		"none": 	"'#panda.mvc.view.VoidView",
+		"null": 	"'#panda.mvc.view.VoidView"
+	},
+	*/
+}

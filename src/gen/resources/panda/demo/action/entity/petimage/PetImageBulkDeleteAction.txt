@@ -1,0 +1,5 @@
+title=Pet Image
+
+icon=fa fa-picture-o
+
+

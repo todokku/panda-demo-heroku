@@ -1,0 +1,5 @@
+icon=fa fa-circle-o-notch
+title=Memory Allocate Test
+
+p.m=Allocate Type
+p.s=Allocate Size

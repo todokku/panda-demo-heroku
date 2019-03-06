@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="panda.tool.codegen" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://pandafw.github.io/repos/schema/panda-codegen-module-1.5.0.xsd">
+	<include>codegen.xml</include>
+
+	<!-- entity -->
+	<entity name="${entity.package}.Pet" extend="uEntity" baseBeanClass="${entity.suBeanClass}" baseQueryClass="${entity.suQueryClass}" trimString="${trim.stringNull}" trimList="${trim.listNull}" identity="id" identityStart="1001" generate="true">
+		<property name="id" type="Long" notNull="true" primaryKey="true" comment="pet id"/>
+		<property name="name" type="String" size="100" notNull="true" uniqueKey="NG" comment="pet name">
+			<validator type="stringlength">
+				<param name="maxLength" value="100"/>
+			</validator>
+		</property>
+		<property name="cid" type="Long" notNull="true" foreignEntity="PetCategory" comment="category id"/>
+		<property name="cname" type="String" joinName="CN" joinEntity="PetCategory" joinField="name" joinKeys="cid" joinRefs="id"/>
+		<property name="gender" type="String" size="1" uniqueKey="NG">
+			<validator type="constant">
+				<param name="list" value="%{consts.petGenderMap}"/>
+			</validator>
+		</property>
+		<property name="birthday" type="Date"/>
+		<property name="origin" type="String" size="10">
+			<validator type="constant">
+				<param name="list" value="%{consts.petOriginMap}"/>
+			</validator>
+		</property>
+		<property name="temper" type="String">
+			<validator type="constant">
+				<param name="list" value="%{consts.petTemperMap}"/>
+			</validator>
+		</property>
+		<property name="habits" type="Set&lt;String&gt;">
+			<validator type="constant">
+				<param name="list" value="%{consts.petHabitMap}"/>
+			</validator>
+		</property>
+		<property name="amount" type="Integer" notNull="true" defaultValue="0">
+			<validator type="int">
+				<param name="min" value="0"/>
+			</validator>
+		</property>
+		<property name="price" type="BigDecimal" size="10" scale="2">
+			<validator type="number">
+				<param name="min" value="0"/>
+				<param name="max" value="9999999999"/>
+			</validator>
+			<validator type="decimal">
+				<param name="precision" value="10"/>
+				<param name="scale" value="2"/>
+			</validator>
+		</property>
+		<property name="shopName" type="String" size="100">
+			<validator type="stringlength">
+				<param name="maxLength" value="100"/>
+			</validator>
+		</property>
+		<property name="shopAddress" type="String" size="100">
+			<validator type="stringlength">
+				<param name="maxLength" value="100"/>
+			</validator>
+		</property>
+		<property name="shopTelephone" type="String" size="20">
+			<validator type="stringlength">
+				<param name="maxLength" value="20"/>
+			</validator>
+			<validator type="regex" msgId="validation-telno">
+				<param name="regex" value="#(regex-telno)"/>
+			</validator>
+		</property>
+		<property name="shopCloseTime" type="Date"/>
+		<property name="shopLink" type="String" size="1000">
+			<validator type="url"/>
+		</property>
+		<property name="description" type="String" jdbcType="CLOB" size="5000" setterTrim="">
+			<validator type="stringlength">
+				<param name="maxLength" value="5000"/>
+			</validator>
+		</property>
+		<property name="imageFile" type="FileItem" column="false">
+			<validator type="file">
+				<param name="maxLength" value="1048576"/>
+				<param name="minLength" value="1"/>
+			</validator>
+		</property>
+	</entity>
+
+	<!-- action -->
+	<action name="action.Pet" entity="${entity.package}.Pet" extend="baseAction">
+		<list name="basicList" extend="suList">
+			<column name="id" sortable="true" link="true">
+				<filter type="number"/>
+			</column>
+			<column name="name" sortable="true" link="true">
+				<filter type="string" fixed="true"/>
+			</column>
+			<column name="cid" hidden="true">
+				<filter type="number"/>
+			</column>
+			<!-- NOTE: a fake field column name should start with non letter char -->
+			<column name="-icon">
+				<format type="tran">
+					<param name="expr" value="&quot;&lt;img class='pi-icon' src='%{base}/petimage/pimage?pid=%{top.id}'&gt;&quot;"/>
+					<param name="escape" value="&quot;none&quot;"/>
+				</format>
+			</column>
+			<column name="cname" sortable="true" link="{ 'action': '../petcategory/view', 'params': { 'id': '%{top.cid}' } }">
+				<filter type="string"/>
+			</column>
+			<column name="gender" sortable="true">
+				<format type="code">
+					<param name="codemap" value="consts.petGenderMap"/>
+				</format>
+				<filter type="checklist">
+					<param name="list" value="consts.petGenderMap"/>
+				</filter>
+			</column>
+			<column name="birthday" sortable="true">
+				<format type="date" />
+				<filter type="date"/>
+			</column>
+			<column name="origin" sortable="true">
+				<format type="code">
+					<param name="codemap" value="consts.petOriginMap"/>
+				</format>
+				<filter type="select">
+					<param name="list" value="consts.petOriginMap"/>
+				</filter>
+			</column>
+			<column name="temper" sortable="true">
+				<format type="code">
+					<param name="codemap" value="consts.petTemperMap"/>
+				</format>
+				<filter type="checklist">
+					<param name="list" value="consts.petTemperMap"/>
+				</filter>
+			</column>
+			<column name="habits" sortable="true">
+				<format type="code">
+					<param name="codemap" value="consts.petHabitMap"/>
+				</format>
+			</column>
+			<column name="amount" sortable="true">
+				<filter type="number"/>
+			</column>
+			<column name="price" sortable="true">
+				<filter type="number"/>
+			</column>
+			<column name="shopName" sortable="true">
+				<filter type="string"/>
+			</column>
+		</list>
+		<list name="basicCsv" extend="basicList">
+			<column name="id" display="false"/>
+			<column name="-icon" display="false"/>
+			<column name="cid" hidden="false"/>
+			<column name="cname" display="false"/>
+		</list>
+		<list name="basicPopup" extend="shPopup">
+			<column name="id" sortable="true" link="true">
+				<filter type="number"/>
+			</column>
+			<column name="name" sortable="true" link="true">
+				<filter type="string" fixed="true"/>
+			</column>
+			<column name="cid" hidden="true">
+				<filter type="number"/>
+			</column>
+			<column name="cname" sortable="true" link="{ 'action': '../category/view', 'params': { 'id': '%{top.cid}' } }">
+				<filter type="string"/>
+			</column>
+			<column name="gender" sortable="true">
+				<format type="code">
+					<param name="codemap" value="consts.petGenderMap"/>
+				</format>
+				<filter type="checklist">
+					<param name="list" value="consts.petGenderMap"/>
+				</filter>
+			</column>
+			<column name="birthday" sortable="true">
+				<format type="date" />
+				<filter type="date"/>
+			</column>
+			<column name="origin" sortable="true">
+				<format type="code">
+					<param name="codemap" value="consts.petOriginMap"/>
+				</format>
+				<filter type="select">
+					<param name="list" value="consts.petOriginMap"/>
+				</filter>
+			</column>
+		</list>
+		<list name="basicBulk" extend="basicList">
+			<param name="toolbar" value="${bulk.toolbar}"/>
+			<param name="buttons" value="${bulk.buttons}"/>
+		</list>
+		<input name="basicInput" extend="suInput">
+			<field name="id">
+				<editTag name="${tag.viewfield}"/>
+			</field>
+			<field name="name" required="true">
+				<editTag name="${tag.textfield}">
+					<param name="maxlength" value="100"/>
+					<param name="size" value="${tag.textfield.size}"/>
+				</editTag>
+			</field>
+			<field name="cid" required="true" requiredrefer="cname">
+				<editTag name="${tag.hidden}"/>
+			</field>
+			<field name="cname" required="true" requiredvalidate="false">
+				<editTag name="${tag.triggerfield}">
+					<param name="~popup" value="{'action':'../petcategory/list_popup','fields':{'cid':'id', 'cname':'name'}}"/>
+					<param name="readonly" value="true"/>
+				</editTag>
+			</field>
+			<field name="gender">
+				<editTag name="${tag.radio}">
+					<param name="emptyOption" value="true"/>
+					<param name="list" value="%{consts.petGenderMap}"/>
+				</editTag>
+			</field>
+			<field name="birthday">
+				<editTag name="${tag.datepicker}">
+					<param name="maxlength" value="${tag.datepicker.maxlength}"/>
+					<param name="size" value="${tag.datepicker.size}"/>
+				</editTag>
+			</field>
+			<field name="origin">
+				<editTag name="${tag.select}">
+					<param name="emptyOption" value="true"/>
+					<param name="list" value="%{consts.petOriginMap}"/>
+				</editTag>
+			</field>
+			<field name="temper">
+				<editTag name="${tag.radio}">
+					<param name="emptyOption" value="true"/>
+					<param name="list" value="%{consts.petTemperMap}"/>
+				</editTag>
+			</field>
+			<field name="habits">
+				<editTag name="${tag.checkboxlist}">
+					<param name="emptyOption" value="true"/>
+					<param name="list" value="%{consts.petHabitMap}"/>
+				</editTag>
+			</field>
+			<field name="amount" required="true">
+				<editTag name="${tag.textfield}">
+					<param name="maxlength" value="${tag.intfield.maxlength}"/>
+					<param name="size" value="${tag.intfield.size}"/>
+				</editTag>
+			</field>
+			<field name="price">
+				<editTag name="${tag.textfield}">
+					<param name="maxlength" value="${tag.intfield.maxlength}"/>
+					<param name="size" value="${tag.textfield.size}"/>
+				</editTag>
+			</field>
+			<field name="shopName">
+				<editTag name="${tag.textfield}">
+					<param name="maxlength" value="100"/>
+				</editTag>
+			</field>
+			<field name="shopAddress">
+				<editTag name="${tag.textfield}">
+					<param name="maxlength" value="100"/>
+				</editTag>
+			</field>
+			<field name="shopTelephone">
+				<editTag name="${tag.textfield}">
+					<param name="maxlength" value="20"/>
+					<param name="size" value="25"/>
+				</editTag>
+			</field>
+			<field name="shopCloseTime">
+				<editTag name="${tag.timepicker}">
+					<param name="maxlength" value="${tag.timepicker.maxlength}"/>
+					<param name="size" value="${tag.timepicker.size}"/>
+				</editTag>
+			</field>
+			<field name="shopLink">
+				<editTag name="${tag.textfield}">
+					<param name="maxlength" value="100"/>
+				</editTag>
+			</field>
+			<field name="description">
+				<editTag name="${tag.htmleditor}">
+					<param name="maxlength" value="5000"/>
+					<param name="cols" value="${tag.textarea.cols}"/>
+					<param name="rows" value="15"/>
+				</editTag>
+			</field>
+			<field name="imageFile">
+				<editTag name="${tag.uploader}">
+					<param name="accept" value="image/*"/>
+					<param name="size" value="${tag.uploader.size}"/>
+					<param name="uploadAction" value="%{b.files_path + '/upload'}"/>
+					<param name="uploadName" value="file"/>
+					<param name="dnloadAction" value="%{b.files_path + '/download'}"/>
+					<param name="dnloadName" value="file"/>
+					<param name="defaultAction" value="/petimage/pimage"/>
+					<param name="defaultParams" value="!{'pid': '%{r.id}'}"/>
+					<param name="defaultEnable" value="%{r.id != null}"/>
+				</editTag>
+			</field>
+		</input>
+	</action>
+	<action name="pet" extend="action.Pet" autoJoin="left:all" actionClass="${action.package}.pet.PetListAction" actionBaseClass="${action.baseListActionClass}" generate="true">
+		<list name="list" extend="basicList" template="${template.list}" generate="true"/>
+		<list name="list.pdf" extend="basicList" template="${template.list_pdf}" generate="true"/>
+		<list name="list.print" extend="basicList" template="${template.list_print}" generate="true"/>
+	</action>
+	<action name="pet" auth="${action.auth}" path="${action.path}" extend="action.Pet" autoJoin="left:all" actionClass="${action.package}.pet.PetExportAction" actionBaseClass="${action.baseListActionClass}" generate="true">
+		<list name="list.json" extend="basicCsv" template="${template.list_json}" generate="true"/>
+		<list name="list.xml" extend="basicCsv" template="${template.list_xml}" generate="true"/>
+		<list name="expo.csv" extend="basicCsv" template="${template.expo_csv}" generate="true"/>
+		<list name="expo.xlsx" extend="basicCsv" template="${template.expo_xlsx}" generate="true"/>
+	</action>
+	<action name="pet" auth="${action.auth}" path="${action.path}" extend="action.Pet" autoJoin="left:all" actionClass="${action.package}.pet.PetPopupAction" actionBaseClass="${action.baseListActionClass}" generate="true">
+		<list name="list.popup" extend="basicPopup" template="${template.list_popup}" generate="true"/>
+	</action>
+	<action name="pet" extend="action.Pet" actionClass="${action.package}.pet.PetImportAction" actionBaseClass="${action.baseImportActionClass}" generate="true">
+		<list name="import" extend="basicList" template="${template.import}" generate="true"/>
+	</action>
+	<action name="pet" extend="action.Pet" autoJoin="left:all" actionClass="${action.package}.pet.PetBulkDisableAction" actionBaseClass="${action.baseBulkActionClass}" generate="true">
+		<list name="bdisable" extend="basicBulk" template="${template.bupdate}" generate="true"/>
+	</action>
+	<action name="pet" extend="action.Pet" autoJoin="left:all" actionClass="${action.package}.pet.PetBulkEnableAction" actionBaseClass="${action.baseBulkActionClass}" generate="true">
+		<list name="benable" extend="basicBulk" template="${template.bupdate}" generate="true"/>
+	</action>
+	<action name="pet" extend="action.Pet" autoJoin="left:all" actionClass="${action.package}.pet.PetBulkDeleteAction" actionBaseClass="${action.baseBulkActionClass}" generate="true">
+		<list name="bdelete" extend="basicBulk" template="${template.bdelete}" generate="true"/>
+	</action>
+	<action name="pet" extend="action.Pet" actionClass="${action.package}.pet.PetEditAction" autoJoin="left:all" actionBaseClass="${action.baseEditActionClass}" generate="true">
+		<input name="view" extend="basicInput" template="${template.view}" generate="true">
+			<param name="toolbar" value="${view.toolbar}"/>
+			<param name="actions" value="${view.actions}"/>
+		</input>
+		<input name="print" extend="basicInput" template="${template.print}" generate="true"/>
+		<input name="copy" extend="basicInput" template="${template.copy}" generate="true"/>
+		<input name="add" extend="basicInput" template="${template.add}" generate="true"/>
+		<input name="edit" extend="basicInput" template="${template.edit}" generate="true"/>
+		<input name="delete" extend="basicInput" template="${template.delete}" generate="true">
+			<param name="toolbar" value="${delete.toolbar}"/>
+			<param name="actions" value="${delete.actions}"/>
+		</input>
+	</action>
+
+	<!-- resource -->
+	<resource>
+		<entity name="${entity.package}.Pet">
+			<property name="name" label="Name"/>
+			<property name="cid" label="Category ID"/>
+			<property name="cname" label="Category"/>
+			<property name="gender" label="Gender"/>
+			<property name="birthday" label="Brithday"/>
+			<property name="origin" label="Origin"/>
+			<property name="temper" label="Temper"/>
+			<property name="habits" label="Habits"/>
+			<property name="amount" label="Amount"/>
+			<property name="price" label="Price"/>
+			<property name="shopName" label="Shop name"/>
+			<property name="shopAddress" label="Shop address"/>
+			<property name="shopTelephone" label="Shop TEL"/>
+			<property name="shopCloseTime" label="Shop Close Time"/>
+			<property name="shopLink" label="Shop URL"/>
+			<property name="description" label="Description"/>
+			<property name="imageFile" label="Image"/>
+		</entity>
+		<action name="pet" title="Pet">
+			<property name="icon" label="fa fa-qq"/>
+		</action>
+	</resource>
+	<resource locale="ja">
+		<entity name="${entity.package}.Pet">
+			<property name="name" label="名前"/>
+			<property name="cid" label="カテゴリID"/>
+			<property name="cname" label="カテゴリ名"/>
+			<property name="gender" label="性別"/>
+			<property name="birthday" label="誕生日"/>
+			<property name="origin" label="出身地"/>
+			<property name="temper" label="性格"/>
+			<property name="habits" label="習慣"/>
+			<property name="amount" label="数量"/>
+			<property name="price" label="価格"/>
+			<property name="shopName" label="店名"/>
+			<property name="shopAddress" label="店住所"/>
+			<property name="shopTelephone" label="店電話"/>
+			<property name="shopCloseTime" label="閉店時間"/>
+			<property name="shopLink" label="店URL"/>
+			<property name="description" label="説明"/>
+			<property name="imageFile" label="写真"/>
+		</entity>
+		<action name="pet" title="ペット"/>
+	</resource>
+	<resource locale="zh">
+		<entity name="${entity.package}.Pet">
+			<property name="name" label="宠物名"/>
+			<property name="cid" label="类别ID"/>
+			<property name="cname" label="类别名"/>
+			<property name="gender" label="性別"/>
+			<property name="birthday" label="生日"/>
+			<property name="origin" label="出身地"/>
+			<property name="temper" label="性格"/>
+			<property name="habits" label="习惯"/>
+			<property name="amount" label="数量"/>
+			<property name="price" label="价格"/>
+			<property name="shopName" label="商店名"/>
+			<property name="shopAddress" label="商店地址"/>
+			<property name="shopTelephone" label="商店电话"/>
+			<property name="shopCloseTime" label="关店时间"/>
+			<property name="shopLink" label="商店URL"/>
+			<property name="description" label="说明"/>
+			<property name="imageFile" label="照片"/>
+		</entity>
+		<action name="pet" title="宠物"/>
+	</resource>
+</module>

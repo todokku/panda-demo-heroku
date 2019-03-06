@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="panda.tool.codegen" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://pandafw.github.io/repos/schema/panda-codegen-module-1.5.0.xsd">
+	<include>codegen.xml</include>
+
+	<!-- entity -->
+	<entity name="${entity.package}.PetImage" baseBeanClass="${entity.uBeanClass}" baseQueryClass="${entity.uQueryClass}" trimString="${trim.stringNull}" trimList="${trim.listNull}" identity="id" identityStart="1001">
+		<property name="id" type="Long" notNull="true" primaryKey="true"/>
+		<property name="pid" type="Long" notNull="true" foreignEntity="Pet" foreignKeyOnUpdate="CASCADE" foreignKeyOnDelete="CASCADE"/>
+		<property name="pname" type="String" joinName="PN" joinEntity="Pet" joinField="name" joinKeys="pid" joinRefs="id"/>
+		<property name="imageName" type="String" size="255">
+			<validator type="stringlength">
+				<param name="maxLength" value="255"/>
+			</validator>
+		</property>
+		<property name="imageData" type="byte[]" jdbcType="BLOB" notNull="true"/>
+		<property name="imageSize" type="Integer" notNull="true"/>
+		<property name="imageFile" type="FileItem" column="false">
+			<validator type="file">
+				<param name="maxLength" value="1048576"/>
+				<param name="minLength" value="1"/>
+			</validator>
+		</property>
+	</entity>
+
+	<!-- action -->
+	<action name="action.PetImage" entity="${entity.package}.PetImage" extend="baseAction">
+		<property name="file" type="FileItem"/>
+		<list name="basicList" extend="uList">
+			<column name="id" hidden="false" sortable="true" link="true">
+				<filter type="number"/>
+			</column>
+			<column name="pid" hidden="false" sortable="true" link="{ 'action': '../pet/view', 'params': { 'id': '%{top.pid}' } }">
+				<filter type="number"/>
+			</column>
+			<column name="pname" hidden="false" sortable="true" link="{ 'action': '../pet/view', 'params': { 'id': '%{top.pid}' } }">
+				<filter type="string"/>
+			</column>
+			<column name="imageName" hidden="false" sortable="true" link="true">
+				<filter type="string"/>
+			</column>
+			<column name="imageSize" hidden="false" sortable="true" link="false">
+				<format type="size"/>
+			</column>
+			<column name="imageFile" hidden="false" sortable="true" link="false">
+				<format type="expr">
+					<param name="expr" value="&quot;assist.getPetImageLink(top)&quot;"/>
+					<param name="escape" value="&quot;none&quot;"/>
+				</format>
+			</column>
+		</list>
+		<list name="basicBulk" extend="basicList">
+			<param name="toolbar" value="${bulk.toolbar}"/>
+			<param name="buttons" value="${bulk.buttons}"/>
+		</list>
+		<input name="basicInput" extend="uInput">
+			<field name="id">
+				<editTag name="${tag.viewfield}"/>
+			</field>
+			<field name="pid" required="true" requiredrefer="pname">
+				<editTag name="${tag.hidden}"/>
+			</field>
+			<field name="pname" required="true" requiredvalidate="false">
+				<editTag name="${tag.triggerfield}">
+					<param name="~popup" value="{'action':'../pet/list_popup','fields':{'pid':'id', 'pname':'name'}}"/>
+					<param name="readonly" value="true"/>
+				</editTag>
+			</field>
+			<field name="imageName">
+				<editTag name="${tag.textfield}">
+					<param name="maxlength" value="255"/>
+				</editTag>
+			</field>
+			<field name="imageSize">
+				<editTag name="${tag.viewfield}">
+					<param name="format" value="size"/>
+				</editTag>
+			</field>
+			<field name="imageFile">
+				<editTag name="${tag.uploader}">
+					<param name="accept" value="image/*"/>
+					<param name="size" value="${tag.uploader.size}"/>
+					<param name="uploadAction" value="%{b.files_path + '/upload'}"/>
+					<param name="uploadName" value="file"/>
+					<param name="dnloadAction" value="%{b.files_path + '/download'}"/>
+					<param name="dnloadName" value="file"/>
+					<param name="defaultAction" value="/petimage/pimage"/>
+					<param name="defaultParams" value="!{'id': '%{r.id}'}"/>
+					<param name="defaultEnable" value="%{r.id != null &amp;&amp; r.imageSize > 0}"/>
+				</editTag>
+			</field>
+		</input>
+		<input name="basicAdd" extend="basicInput">
+			<field name="imageFile" required="true"/>
+		</input>
+	</action>
+	<action name="petimage" auth="${action.auth}" path="${action.path}" autoJoin="left:all" extend="action.PetImage" actionClass="${action.package}.petimage.PetImageListAction" actionBaseClass="${action.baseListActionClass}" generate="true">
+		<list name="list" extend="basicList" template="${template.list}" generate="true"/>
+		<list name="list.print" extend="basicList" template="${template.list_print}" generate="true"/>
+	</action>
+	<action name="petimage" auth="${action.auth}" path="${action.path}" autoJoin="left:all" extend="action.PetImage" actionClass="${action.package}.petimage.PetImageBulkDeleteAction" actionBaseClass="${action.baseBulkActionClass}" generate="true">
+		<list name="bdelete" extend="basicBulk" template="${template.bdelete}" generate="true"/>
+	</action>
+	<action name="petimage" autoJoin="left:all" extend="action.PetImage" actionClass="${action.package}.petimage.PetImageEditAction" actionBaseClass="${action.baseEditActionClass}" generate="true">
+		<input name="view" extend="basicInput" template="${template.view}" generate="true">
+			<param name="toolbar" value="${view.toolbar}"/>
+			<param name="actions" value="${view.actions}"/>
+		</input>
+		<input name="print" extend="basicInput" template="${template.print}" generate="true"/>
+		<input name="copy" extend="basicAdd" template="${template.copy}" generate="true"/>
+		<input name="add" extend="basicAdd" template="${template.add}" generate="true"/>
+		<input name="edit" extend="basicInput" template="${template.edit}" generate="true"/>
+		<input name="delete" extend="basicInput" template="${template.delete}" generate="true">
+			<param name="toolbar" value="${delete.toolbar}"/>
+			<param name="actions" value="${delete.actions}"/>
+		</input>
+	</action>
+
+	<!-- resource -->
+	<resource>
+		<entity name="${entity.package}.PetImage">
+			<property name="pid" label="Pet ID"/>
+			<property name="pname" label="Pet Name"/>
+			<property name="imageName" label="Image Name"/>
+			<property name="imageSize" label="Image Size"/>
+			<property name="imageFile" label="Image"/>
+		</entity>
+		<action name="petimage" title="Pet Image">
+			<property name="icon" label="fa fa-picture-o"/>
+		</action>
+	</resource>
+	<resource locale="ja">
+		<entity name="${entity.package}.PetImage">
+			<property name="pid" label="ペットID"/>
+			<property name="pname" label="ペット名"/>
+			<property name="imageName" label="写真名"/>
+			<property name="imageSize" label="写真サイズ"/>
+			<property name="imageFile" label="写真"/>
+		</entity>
+		<action name="petimage" title="ペット写真"/>
+	</resource>
+	<resource locale="zh">
+		<entity name="${entity.package}.PetImage">
+			<property name="pid" label="宠物ID"/>
+			<property name="pname" label="宠物名"/>
+			<property name="imageName" label="照片名"/>
+			<property name="imageSize" label="照片大小"/>
+			<property name="imageFile" label="照片"/>
+		</entity>
+		<action name="petimage" title="宠物照片"/>
+	</resource>
+</module>

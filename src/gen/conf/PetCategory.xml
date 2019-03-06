@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="panda.tool.codegen" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://pandafw.github.io/repos/schema/panda-codegen-module-1.5.0.xsd">
+	<include>codegen.xml</include>
+
+	<!-- entity -->
+	<entity name="${entity.package}.PetCategory" baseBeanClass="${entity.suBeanClass}" baseQueryClass="${entity.suQueryClass}" trimString="${trim.stringNull}" trimList="${trim.listNull}" identity="id" identityStart="1001">
+		<property name="id" type="Long" notNull="true" primaryKey="true"/>
+		<property name="name" type="String" size="50" notNull="true" uniqueKey="N">
+			<validator type="stringlength">
+				<param name="maxLength" value="50"/>
+			</validator>
+		</property>
+		<property name="memo" type="String" size="1000">
+			<validator type="stringlength">
+				<param name="maxLength" value="1000"/>
+			</validator>
+		</property>
+	</entity>
+
+	<!-- action -->
+	<action name="action.PetCategory" entity="${entity.package}.PetCategory" extend="baseAction">
+		<list name="basicList" extend="suList">
+			<column name="id" hidden="false" sortable="true" link="true">
+				<filter type="number"/>
+			</column>
+			<column name="name" hidden="false" sortable="true" link="true">
+				<filter type="string" fixed="true"/>
+			</column>
+		</list>
+		<list name="basicBulk" extend="basicList">
+			<param name="toolbar" value="${bulk.toolbar}"/>
+			<param name="buttons" value="${bulk.buttons}"/>
+		</list>
+		<list name="basicPopup" extend="sPopup">
+			<column name="id" hidden="false" sortable="true" link="true">
+				<filter type="number"/>
+			</column>
+			<column name="name" hidden="false" sortable="true" link="true">
+				<filter type="string" fixed="true"/>
+			</column>
+		</list>
+		<input name="basicInput" extend="suInput">
+			<field name="id">
+				<editTag name="${tag.viewfield}"/>
+			</field>
+			<field name="name" required="true">
+				<editTag name="${tag.textfield}">
+					<param name="maxlength" value="50"/>
+					<param name="size" value="${tag.textfield.size}"/>
+				</editTag>
+			</field>
+			<field name="memo">
+				<editTag name="${tag.textarea}">
+					<param name="maxlength" value="1000"/>
+					<param name="cols" value="${tag.textarea.cols}"/>
+					<param name="rows" value="10"/>
+				</editTag>
+			</field>
+		</input>
+	</action>
+	<action name="petcategory" auth="${action.auth}" path="${action.path}" extend="action.PetCategory" actionClass="${action.package}.petcategory.PetCategoryListAction" actionBaseClass="${action.baseListActionClass}" generate="true">
+		<list name="list" extend="basicList" template="${template.list}" generate="true"/>
+		<list name="list.pdf" extend="basicList" template="${template.list_pdf}" generate="true"/>
+		<list name="list.print" extend="basicList" template="${template.list_print}" generate="true"/>
+		<list name="list.json" extend="basicList" template="${template.list_json}" generate="true"/>
+		<list name="list.xml" extend="basicList" template="${template.list_xml}" generate="true"/>
+		<list name="expo.csv" extend="basicList" template="${template.expo_csv}" generate="true"/>
+		<list name="expo.xlsx" extend="basicList" template="${template.expo_xlsx}" generate="true"/>
+	</action>
+	<action name="petcategory" auth="${action.auth}" path="${action.path}" extend="action.PetCategory" actionClass="${action.package}.petcategory.PetCategoryPopupAction" actionBaseClass="${action.baseListActionClass}" generate="true">
+		<list name="list.popup" extend="basicPopup" template="${template.list_popup}" generate="true"/>
+	</action>
+	<action name="petcategory" auth="${action.auth}" path="${action.path}" extend="action.PetCategory" actionClass="${action.package}.petcategory.PetCategoryImportAction" actionBaseClass="${action.baseImportActionClass}" generate="true">
+		<list name="import" extend="basicList" template="${template.import}" generate="true"/>
+	</action>
+	<action name="petcategory" extend="action.PetCategory" actionClass="${action.package}.petcategory.PetCategoryBulkDisableAction" actionBaseClass="${action.baseBulkActionClass}" generate="true">
+		<list name="bdisable" extend="basicBulk" template="${template.bupdate}" generate="true"/>
+	</action>
+	<action name="petcategory" extend="action.PetCategory" actionClass="${action.package}.petcategory.PetCategoryBulkEnableAction" actionBaseClass="${action.baseBulkActionClass}" generate="true">
+		<list name="benable" extend="basicBulk" template="${template.bupdate}" generate="true"/>
+	</action>
+	<action name="petcategory" auth="${action.auth}" path="${action.path}" extend="action.PetCategory" actionClass="${action.package}.petcategory.PetCategoryBulkDeleteAction" actionBaseClass="${action.baseBulkActionClass}" generate="true">
+		<list name="bdelete" extend="basicBulk" template="${template.bdelete}" generate="true"/>
+	</action>
+	<action name="petcategory" auth="${action.auth}" path="${action.path}" extend="action.PetCategory" actionClass="${action.package}.petcategory.PetCategoryEditAction" actionBaseClass="${action.baseEditActionClass}" generate="true">
+		<input name="view" extend="basicInput" template="${template.view}" generate="true">
+			<param name="toolbar" value="${view.toolbar}"/>
+			<param name="actions" value="${view.actions}"/>
+		</input>
+		<input name="print" extend="basicInput" template="${template.print}" generate="true"/>
+		<input name="copy" extend="basicInput" template="${template.copy}" generate="true"/>
+		<input name="add" extend="basicInput" template="${template.add}" generate="true"/>
+		<input name="edit" extend="basicInput" template="${template.edit}" generate="true"/>
+		<input name="delete" extend="basicInput" template="${template.delete}" generate="true">
+			<param name="toolbar" value="${delete.toolbar}"/>
+			<param name="actions" value="${delete.actions}"/>
+		</input>
+	</action>
+
+	<!-- resource -->
+	<resource>
+		<entity name="${entity.package}.PetCategory">
+			<property name="id" label="Category Id"/>
+			<property name="name" label="Name"/>
+			<property name="memo" label="Memo"/>
+		</entity>
+		<action name="petcategory" title="Pet Category">
+			<property name="icon" label="fa fa-bookmark"/>
+		</action>
+	</resource>
+	<resource locale="ja">
+		<entity name="${entity.package}.PetCategory">
+			<property name="id" label="カテゴリID"/>
+			<property name="name" label="カテゴリ名"/>
+			<property name="memo" label="カテゴリ説明"/>
+		</entity>
+		<action name="petcategory" title="ペットカテゴリ"/>
+	</resource>
+	<resource locale="zh">
+		<entity name="${entity.package}.PetCategory">
+			<property name="id" label="类别ID"/>
+			<property name="name" label="类别名"/>
+			<property name="memo" label="类别说明"/>
+		</entity>
+		<action name="petcategory" title="宠物类别"/>
+	</resource>
+</module>

@@ -1,0 +1,11 @@
+pid=宠物ID
+
+pname=宠物名
+
+imageName=照片名
+
+imageSize=照片大小
+
+imageFile=照片
+
+
