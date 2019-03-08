@@ -4,9 +4,7 @@
 <p>&lt;<@p.text name="site-name"/>&gt;をご利用いただき、ありがとうございます。</p>
 
 <pre>
-${name?html}様は下記アカウントのパスワード再設定を要請しました。
-メールアドレス: ${name?html}
-(要請時間: <@p.date value=assist.systemDate format="datetime"/>)
+${name?html}様は、<@p.date value=assist.systemDate format="datetime"/>にアカウントのパスワード再設定を要請しました。
 
 パスワードを再設定する場合は、以下のリンクをタップしてください。
 <@p.url var="url" action="./reset" forceAddSchemeHostAndPort="true"><@p.param name="token" value=token/></@p.url>
