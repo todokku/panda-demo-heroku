@@ -15,7 +15,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jdk.version>1.7</jdk.version>
 		<panda.version>1.5.1-SNAPSHOT</panda.version>
-		<GA>${env.GA}</GA>
 		<log.hostname>heroku</log.hostname>
 		<log.slack.channel>#alert</log.slack.channel>
 		<log.slack.webhook>${env.LOG_SLACK_WEBHOOK}</log.slack.webhook>
