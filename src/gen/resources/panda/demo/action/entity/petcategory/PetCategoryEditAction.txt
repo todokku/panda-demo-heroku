@@ -2,4 +2,6 @@ title=Pet Category
 
 icon=fa fa-bookmark
 
+form-focusme=true
+
 

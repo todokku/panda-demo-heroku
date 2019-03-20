@@ -23,7 +23,7 @@
 
 	<#include "/action-alert.ftl"/>
 
-	<@p.form cssClass="p-eform" id="petimage" focusme="true" method="post" theme="bs3h">
+	<@p.form cssClass="p-eform" id="petimage" method="post">
 	<#if a.displayField("id")>
 			<@p.viewfield
 				key="id"
@@ -121,8 +121,8 @@
 
 		<script type="text/javascript"><!--
 			function petimage_pname_onPopupCallback(sd) {
-				$("#petimage_pid").val(sd.id);
-				$("#petimage_pname").val(sd.name);
+				$("#petimage_pid").changeValue(sd.id);
+				$("#petimage_pname").changeValue(sd.name);
 				$.popup().hide();
 			}
 
