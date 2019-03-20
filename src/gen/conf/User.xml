@@ -62,19 +62,16 @@
 			<field name="name" required="true">
 				<editTag name="${tag.textfield}">
 					<param name="maxlength" value="20"/>
-					<param name="size" value="${tag.textfield.size}"/>
 				</editTag>
 			</field>
 			<field name="email" required="true">
 				<editTag name="${tag.textfield}">
 					<param name="maxlength" value="100"/>
-					<param name="size" value="${tag.textfield.size}"/>
 				</editTag>
 			</field>
 			<field name="password" required="false">
 				<editTag name="${tag.textfield}">
 					<param name="maxlength" value="20"/>
-					<param name="size" value="${tag.textfield.size}"/>
 				</editTag>
 			</field>
 			<field name="role">

@@ -37,7 +37,6 @@
 				value="%{r.name}"
 				required="true"
 				maxlength="100"
-				size="60"
 			/>
 	</#if>
 	<#if a.displayField("cid")>
@@ -108,7 +107,6 @@
 				key="price"
 				value="%{r.price}"
 				maxlength="14"
-				size="60"
 			/>
 	</#if>
 	<#if a.displayField("shopName")>
@@ -153,7 +151,7 @@
 				key="description"
 				value="%{r.description}"
 				maxlength="5000"
-				cols="60"
+				cols=""
 				rows="15"
 			/>
 	</#if>

@@ -37,7 +37,6 @@
 				value="%{r.name}"
 				required="true"
 				maxlength="50"
-				size="60"
 			/>
 	</#if>
 	<#if a.displayField("memo")>
@@ -45,7 +44,7 @@
 				key="memo"
 				value="%{r.memo}"
 				maxlength="1000"
-				cols="60"
+				cols=""
 				rows="10"
 			/>
 	</#if>

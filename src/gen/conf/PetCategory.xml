@@ -46,7 +46,6 @@
 			<field name="name" required="true">
 				<editTag name="${tag.textfield}">
 					<param name="maxlength" value="50"/>
-					<param name="size" value="${tag.textfield.size}"/>
 				</editTag>
 			</field>
 			<field name="memo">

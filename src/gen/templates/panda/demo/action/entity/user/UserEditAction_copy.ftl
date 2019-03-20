@@ -36,7 +36,6 @@
 				value="%{r.name}"
 				required="true"
 				maxlength="20"
-				size="60"
 			/>
 	</#if>
 	<#if a.displayField("email")>
@@ -45,7 +44,6 @@
 				value="%{r.email}"
 				required="true"
 				maxlength="100"
-				size="60"
 			/>
 	</#if>
 	<#if a.displayField("password")>
@@ -53,7 +51,6 @@
 				key="password"
 				value="%{r.password}"
 				maxlength="20"
-				size="60"
 			/>
 	</#if>
 	<#if a.displayField("role")>
