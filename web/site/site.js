@@ -1,15 +1,6 @@
 panda.enable_loadmask_form = true;
 
 //------------------------------------------------------
-function s_preload() {
-	$('body').append(
-		'<div id="preload" class="p-dispear">'
-			+ '<div class="ui-loadmask"></div>'
-			+ '<div class="p-loader-fountain"></div>'
-		+ '</div>');
-}
-
-//------------------------------------------------------
 function s_setbase(c) {
 	c = $.extend(site, c);
 	$.cookie.defaults = c.cookie || {};
@@ -51,6 +42,11 @@ $(function() {
 	// google analytics
 	s_google_analytics(site);
 });
+
+//------------------------------------------------------
+function s_preload() {
+	(new Image()).src = site.statics + '/panda/img/loader/fountain.gif';
+}
 
 //------------------------------------------------------
 function s_setLang(v) {
