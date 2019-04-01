@@ -8,7 +8,7 @@ import panda.demo.entity.User;
 import panda.lang.Strings;
 import panda.mvc.annotation.At;
 
-@At("${super_path}/user")
+@At("${!!super_path|||'/super'}/user")
 @Auth(AUTH.SUPER)
 public class UserImportExAction extends UserImportAction {
 
