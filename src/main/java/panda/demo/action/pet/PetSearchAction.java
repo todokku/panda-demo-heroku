@@ -16,6 +16,7 @@ import panda.lang.Strings;
 import panda.mvc.annotation.At;
 import panda.mvc.annotation.To;
 import panda.mvc.annotation.param.Param;
+import panda.mvc.annotation.param.PathArg;
 import panda.mvc.view.Views;
 import panda.net.URLHelper;
 
@@ -34,7 +35,7 @@ public class PetSearchAction extends WebAction {
 	}
 
 	@At("/petsearch/(.*)$")
-	public Object search(String key, @Param IndexArg arg) throws Exception {
+	public Object search(@PathArg String key, @Param IndexArg arg) throws Exception {
 		key = Strings.stripToEmpty(key);
 		if (Strings.isEmpty(key)) {
 			return null;
