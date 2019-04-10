@@ -40,7 +40,7 @@ import panda.vfs.FileItem;
 })
 public class Pet extends SUBean implements Serializable {
 
-	private static final long serialVersionUID = 1788250496L;
+	private static final long serialVersionUID = 1387649002L;
 
 	/**
 	 * Constructor
@@ -491,7 +491,7 @@ public class Pet extends SUBean implements Serializable {
 	 */
 	@Override
 	public int hashCode() {
-		return Objects.hashCodes(id);
+		return Objects.hash(id);
 	}
 
 	/**

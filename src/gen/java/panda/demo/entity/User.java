@@ -30,7 +30,7 @@ import panda.mvc.validator.Validators;
 })
 public class User extends SCUBean implements Serializable, IUser, IRole {
 
-	private static final long serialVersionUID = -1719720077L;
+	private static final long serialVersionUID = 1888391115L;
 
 	/**
 	 * Constructor
@@ -221,7 +221,7 @@ public class User extends SCUBean implements Serializable, IUser, IRole {
 	 */
 	@Override
 	public int hashCode() {
-		return Objects.hashCodes(id);
+		return Objects.hash(id);
 	}
 
 	/**

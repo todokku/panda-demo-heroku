@@ -25,7 +25,7 @@ import panda.vfs.FileItem;
 })
 public class PetImage extends UBean implements Serializable {
 
-	private static final long serialVersionUID = 251449373L;
+	private static final long serialVersionUID = -368808495L;
 
 	/**
 	 * Constructor
@@ -227,7 +227,7 @@ public class PetImage extends UBean implements Serializable {
 	 */
 	@Override
 	public int hashCode() {
-		return Objects.hashCodes(id);
+		return Objects.hash(id);
 	}
 
 	/**

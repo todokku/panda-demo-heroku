@@ -16,7 +16,7 @@ import panda.mvc.validator.Validators;
 })
 public class PetCategory extends SUBean implements Serializable {
 
-	private static final long serialVersionUID = 1377369589L;
+	private static final long serialVersionUID = 843182005L;
 
 	/**
 	 * Constructor
@@ -134,7 +134,7 @@ public class PetCategory extends SUBean implements Serializable {
 	 */
 	@Override
 	public int hashCode() {
-		return Objects.hashCodes(id);
+		return Objects.hash(id);
 	}
 
 	/**
