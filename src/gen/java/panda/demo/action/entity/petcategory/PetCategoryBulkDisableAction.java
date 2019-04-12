@@ -17,7 +17,7 @@ public abstract class PetCategoryBulkDisableAction extends WebBulkAction<PetCate
 	 */
 	public PetCategoryBulkDisableAction() {
 		setType(PetCategory.class);
-		addDisplayFields(PetCategory.ID, PetCategory.NAME, PetCategory.STATUS, PetCategory.UPDATED_AT, PetCategory.UPDATED_BY, PetCategory.UPDATED_BY_USER);
+		addDisplayFields(PetCategory.ID, PetCategory.NAME, PetCategory.STATUS, PetCategory.UPDATED_AT, PetCategory.UPDATED_BY);
 	}
 
 

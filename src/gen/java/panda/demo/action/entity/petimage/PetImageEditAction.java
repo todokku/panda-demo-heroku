@@ -25,7 +25,7 @@ public abstract class PetImageEditAction extends WebEditAction<PetImage> {
 	 */
 	public PetImageEditAction() {
 		setType(PetImage.class);
-		addDisplayFields(PetImage.ID, PetImage.PID, PetImage.PNAME, PetImage.IMAGE_NAME, PetImage.IMAGE_SIZE, PetImage.IMAGE_FILE, PetImage.UPDATED_AT, PetImage.UPDATED_BY, PetImage.UPDATED_BY_USER);
+		addDisplayFields(PetImage.ID, PetImage.PID, PetImage.PNAME, PetImage.IMAGE_NAME, PetImage.IMAGE_SIZE, PetImage.IMAGE_FILE, PetImage.UPDATED_AT, PetImage.UPDATED_BY, PetImage.UPDATED_BY_NAME, PetImage.UPDATED_BY_USER);
 	}
 
 	/**

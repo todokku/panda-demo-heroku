@@ -26,7 +26,7 @@ public class UserListAction extends WebListAction<User> {
 	 */
 	public UserListAction() {
 		setType(User.class);
-		addDisplayFields(User.ID, User.NAME, User.EMAIL, User.ROLE, User.STATUS, User.CREATED_AT, User.CREATED_BY, User.CREATED_BY_USER, User.UPDATED_AT, User.UPDATED_BY, User.UPDATED_BY_USER);
+		addDisplayFields(User.ID, User.NAME, User.EMAIL, User.ROLE, User.STATUS, User.CREATED_AT, User.CREATED_BY, User.UPDATED_AT, User.UPDATED_BY);
 	}
 
 
@@ -159,14 +159,11 @@ public class UserListAction extends WebListAction<User> {
 			ListColumn lc = new ListColumn();
 			lc.name = "createdBy";
 			lc.header = getFieldLabel("createdBy");
-			lc.hidden = true;
-			columns.add(lc);
-		}
-		if (displayField("createdByUser")) {
-			ListColumn lc = new ListColumn();
-			lc.name = "createdByUser";
-			lc.header = getFieldLabel("createdByUser");
 			lc.hidden = false;
+			ListColumn.Format lcf = new ListColumn.Format();
+			lcf.type = "expr";
+			lcf.expr = "top.createdByUser";
+			lc.format = lcf;
 			columns.add(lc);
 		}
 		if (displayField("updatedAt")) {
@@ -183,14 +180,11 @@ public class UserListAction extends WebListAction<User> {
 			ListColumn lc = new ListColumn();
 			lc.name = "updatedBy";
 			lc.header = getFieldLabel("updatedBy");
-			lc.hidden = true;
-			columns.add(lc);
-		}
-		if (displayField("updatedByUser")) {
-			ListColumn lc = new ListColumn();
-			lc.name = "updatedByUser";
-			lc.header = getFieldLabel("updatedByUser");
 			lc.hidden = false;
+			ListColumn.Format lcf = new ListColumn.Format();
+			lcf.type = "expr";
+			lcf.expr = "top.updatedByUser";
+			lc.format = lcf;
 			columns.add(lc);
 		}
 		return super.expo_csv(qr, columns);
@@ -262,14 +256,11 @@ public class UserListAction extends WebListAction<User> {
 			ListColumn lc = new ListColumn();
 			lc.name = "createdBy";
 			lc.header = getFieldLabel("createdBy");
-			lc.hidden = true;
-			columns.add(lc);
-		}
-		if (displayField("createdByUser")) {
-			ListColumn lc = new ListColumn();
-			lc.name = "createdByUser";
-			lc.header = getFieldLabel("createdByUser");
 			lc.hidden = false;
+			ListColumn.Format lcf = new ListColumn.Format();
+			lcf.type = "expr";
+			lcf.expr = "top.createdByUser";
+			lc.format = lcf;
 			columns.add(lc);
 		}
 		if (displayField("updatedAt")) {
@@ -286,14 +277,11 @@ public class UserListAction extends WebListAction<User> {
 			ListColumn lc = new ListColumn();
 			lc.name = "updatedBy";
 			lc.header = getFieldLabel("updatedBy");
-			lc.hidden = true;
-			columns.add(lc);
-		}
-		if (displayField("updatedByUser")) {
-			ListColumn lc = new ListColumn();
-			lc.name = "updatedByUser";
-			lc.header = getFieldLabel("updatedByUser");
 			lc.hidden = false;
+			ListColumn.Format lcf = new ListColumn.Format();
+			lcf.type = "expr";
+			lcf.expr = "top.updatedByUser";
+			lc.format = lcf;
 			columns.add(lc);
 		}
 		return super.expo_xlsx(qr, columns);

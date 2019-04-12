@@ -186,22 +186,18 @@
 			"name" : "createdBy",
 			"header": a.getFieldLabel("createdBy"),
 			"display": a.displayField("createdBy"),
+			"format": {
+				"expr": "top.createdByUser",
+				"type": "expr"
+			},
 			"filterable": a.filterField("createdBy"),
 			"filter": {
 				"type": "number"
 			},
-			"hidden": true,
-			"link": false,
-			"sortable": true,
-			"tooltip": a.getFieldTooltip("createdBy")
-		}, {
-			"name" : "createdByUser",
-			"header": a.getFieldLabel("createdByUser"),
-			"display": a.displayField("createdByUser"),
 			"hidden": false,
 			"link": false,
 			"sortable": true,
-			"tooltip": a.getFieldTooltip("createdByUser")
+			"tooltip": a.getFieldTooltip("createdBy")
 		}, {
 			"name" : "updatedAt",
 			"header": a.getFieldLabel("updatedAt"),
@@ -221,22 +217,18 @@
 			"name" : "updatedBy",
 			"header": a.getFieldLabel("updatedBy"),
 			"display": a.displayField("updatedBy"),
+			"format": {
+				"expr": "top.updatedByUser",
+				"type": "expr"
+			},
 			"filterable": a.filterField("updatedBy"),
 			"filter": {
 				"type": "number"
 			},
-			"hidden": true,
-			"link": false,
-			"sortable": true,
-			"tooltip": a.getFieldTooltip("updatedBy")
-		}, {
-			"name" : "updatedByUser",
-			"header": a.getFieldLabel("updatedByUser"),
-			"display": a.displayField("updatedByUser"),
 			"hidden": false,
 			"link": false,
 			"sortable": true,
-			"tooltip": a.getFieldTooltip("updatedByUser")
+			"tooltip": a.getFieldTooltip("updatedBy")
 		}] />
 
 

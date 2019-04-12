@@ -23,7 +23,7 @@ public class PetExportAction extends WebListAction<Pet> {
 	 */
 	public PetExportAction() {
 		setType(Pet.class);
-		addDisplayFields(Pet.NAME, Pet.CID, Pet.GENDER, Pet.BIRTHDAY, Pet.ORIGIN, Pet.TEMPER, Pet.HABITS, Pet.AMOUNT, Pet.PRICE, Pet.SHOP_NAME, Pet.STATUS, Pet.UPDATED_AT, Pet.UPDATED_BY, Pet.UPDATED_BY_USER);
+		addDisplayFields(Pet.NAME, Pet.CID, Pet.GENDER, Pet.BIRTHDAY, Pet.ORIGIN, Pet.TEMPER, Pet.HABITS, Pet.AMOUNT, Pet.PRICE, Pet.SHOP_NAME, Pet.STATUS, Pet.UPDATED_AT, Pet.UPDATED_BY);
 	}
 
 
@@ -191,14 +191,11 @@ public class PetExportAction extends WebListAction<Pet> {
 			ListColumn lc = new ListColumn();
 			lc.name = "updatedBy";
 			lc.header = getFieldLabel("updatedBy");
-			lc.hidden = true;
-			columns.add(lc);
-		}
-		if (displayField("updatedByUser")) {
-			ListColumn lc = new ListColumn();
-			lc.name = "updatedByUser";
-			lc.header = getFieldLabel("updatedByUser");
 			lc.hidden = false;
+			ListColumn.Format lcf = new ListColumn.Format();
+			lcf.type = "expr";
+			lcf.expr = "top.updatedByUser";
+			lc.format = lcf;
 			columns.add(lc);
 		}
 		return super.expo_csv(qr, columns);
@@ -327,14 +324,11 @@ public class PetExportAction extends WebListAction<Pet> {
 			ListColumn lc = new ListColumn();
 			lc.name = "updatedBy";
 			lc.header = getFieldLabel("updatedBy");
-			lc.hidden = true;
-			columns.add(lc);
-		}
-		if (displayField("updatedByUser")) {
-			ListColumn lc = new ListColumn();
-			lc.name = "updatedByUser";
-			lc.header = getFieldLabel("updatedByUser");
 			lc.hidden = false;
+			ListColumn.Format lcf = new ListColumn.Format();
+			lcf.type = "expr";
+			lcf.expr = "top.updatedByUser";
+			lc.format = lcf;
 			columns.add(lc);
 		}
 		return super.expo_xlsx(qr, columns);

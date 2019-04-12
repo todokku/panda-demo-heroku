@@ -20,7 +20,7 @@ public abstract class PetEditAction extends WebEditAction<Pet> {
 	 */
 	public PetEditAction() {
 		setType(Pet.class);
-		addDisplayFields(Pet.ID, Pet.NAME, Pet.CID, Pet.CNAME, Pet.GENDER, Pet.BIRTHDAY, Pet.ORIGIN, Pet.TEMPER, Pet.HABITS, Pet.AMOUNT, Pet.PRICE, Pet.SHOP_NAME, Pet.SHOP_ADDRESS, Pet.SHOP_TELEPHONE, Pet.SHOP_CLOSE_TIME, Pet.SHOP_LINK, Pet.DESCRIPTION, Pet.IMAGE_FILE, Pet.STATUS, Pet.UPDATED_AT, Pet.UPDATED_BY, Pet.UPDATED_BY_USER);
+		addDisplayFields(Pet.ID, Pet.NAME, Pet.CID, Pet.CNAME, Pet.GENDER, Pet.BIRTHDAY, Pet.ORIGIN, Pet.TEMPER, Pet.HABITS, Pet.AMOUNT, Pet.PRICE, Pet.SHOP_NAME, Pet.SHOP_ADDRESS, Pet.SHOP_TELEPHONE, Pet.SHOP_CLOSE_TIME, Pet.SHOP_LINK, Pet.DESCRIPTION, Pet.IMAGE_FILE, Pet.STATUS, Pet.UPDATED_AT, Pet.UPDATED_BY, Pet.UPDATED_BY_NAME, Pet.UPDATED_BY_USER);
 	}
 
 

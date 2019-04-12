@@ -17,7 +17,7 @@ public abstract class UserBulkEnableAction extends WebBulkAction<User> {
 	 */
 	public UserBulkEnableAction() {
 		setType(User.class);
-		addDisplayFields(User.ID, User.NAME, User.EMAIL, User.ROLE, User.STATUS, User.CREATED_AT, User.CREATED_BY, User.CREATED_BY_USER, User.UPDATED_AT, User.UPDATED_BY, User.UPDATED_BY_USER);
+		addDisplayFields(User.ID, User.NAME, User.EMAIL, User.ROLE, User.STATUS, User.CREATED_AT, User.CREATED_BY, User.UPDATED_AT, User.UPDATED_BY);
 	}
 
 

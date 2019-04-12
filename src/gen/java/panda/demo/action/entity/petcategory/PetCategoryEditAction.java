@@ -19,7 +19,7 @@ public class PetCategoryEditAction extends WebEditAction<PetCategory> {
 	 */
 	public PetCategoryEditAction() {
 		setType(PetCategory.class);
-		addDisplayFields(PetCategory.ID, PetCategory.NAME, PetCategory.MEMO, PetCategory.STATUS, PetCategory.UPDATED_AT, PetCategory.UPDATED_BY, PetCategory.UPDATED_BY_USER);
+		addDisplayFields(PetCategory.ID, PetCategory.NAME, PetCategory.MEMO, PetCategory.STATUS, PetCategory.UPDATED_AT, PetCategory.UPDATED_BY, PetCategory.UPDATED_BY_NAME, PetCategory.UPDATED_BY_USER);
 	}
 
 
