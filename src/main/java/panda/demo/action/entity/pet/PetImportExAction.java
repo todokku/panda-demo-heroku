@@ -1,7 +1,6 @@
 package panda.demo.action.entity.pet;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -29,8 +28,7 @@ public class PetImportExAction extends PetImportAction {
 	@SuppressWarnings("unchecked")
 	private String getGender(String p) {
 		if (genders == null) {
-			genders = new HashMap<String, String>(consts().getPetGenderMap());
-			Collections.swap(genders);
+			genders = Collections.swapMap(consts().getPetGenderMap());
 		}
 		return genders.get(p);
 	}
@@ -38,8 +36,7 @@ public class PetImportExAction extends PetImportAction {
 	@SuppressWarnings("unchecked")
 	private String getHabit(String p) {
 		if (habits == null) {
-			habits = new HashMap<String, String>(consts().getPetHabitMap());
-			Collections.swap(habits);
+			habits = Collections.swapMap(consts().getPetHabitMap());
 		}
 		return habits.get(p);
 	}
@@ -47,8 +44,7 @@ public class PetImportExAction extends PetImportAction {
 	@SuppressWarnings("unchecked")
 	private String getOrigin(String p) {
 		if (origins == null) {
-			origins = new HashMap<String, String>(consts().getPetOriginMap());
-			Collections.swap(origins);
+			origins = Collections.swapMap(consts().getPetOriginMap());
 		}
 		return origins.get(p);
 	}
@@ -56,8 +52,7 @@ public class PetImportExAction extends PetImportAction {
 	@SuppressWarnings("unchecked")
 	private String getTemper(String p) {
 		if (tempers == null) {
-			tempers = new HashMap<String, String>(consts().getPetTemperMap());
-			Collections.swap(tempers);
+			tempers = Collections.swapMap(consts().getPetTemperMap());
 		}
 		return tempers.get(p);
 	}
