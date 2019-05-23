@@ -125,18 +125,18 @@
 		"token": true,
 		"cron": "0 0/10 * * * *"
 	}, {
-*/
 		"action": "/task/logconfigure/start",
 		"description": "Execute every 30 minutes to configure logs",
 		"token": true,
 		"initialDelay": 1800000,
 		"fixedDelay": 1800000
 	}, {
+*/
 		"action": "/task/filestorecleanup/start",
-		"description": "Execute every 60 minutes to remove the upload temporary files",
+		"description": "Execute every 4 hours to remove the upload temporary files",
 		"token": true,
 		"initialDelay": 3600000,
-		"fixedDelay": 3600000
+		"fixedDelay": 14400000
 	}, {
 		"action": "/task/tmpfilescleanup/start",
 		"description": "Execute every 24 hours to remove the application temporary files",
