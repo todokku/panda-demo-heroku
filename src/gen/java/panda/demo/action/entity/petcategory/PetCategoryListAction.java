@@ -21,7 +21,7 @@ public class PetCategoryListAction extends WebListAction<PetCategory> {
 	 */
 	public PetCategoryListAction() {
 		setType(PetCategory.class);
-		addDisplayFields(PetCategory.ID, PetCategory.NAME, PetCategory.STATUS, PetCategory.UPDATED_AT, PetCategory.UPDATED_BY);
+		setDisplayFields(PetCategory.ID, PetCategory.NAME, PetCategory.STATUS, PetCategory.UPDATED_AT, PetCategory.UPDATED_BY);
 	}
 
 
@@ -92,24 +92,24 @@ public class PetCategoryListAction extends WebListAction<PetCategory> {
 	@To(value=Views.SFTL, error=Views.SFTL)
 	public Object expo_csv(@Param @VisitValidate QueryerEx qr) {
 		List<ListColumn> columns = new ArrayList<ListColumn>();
-		if (displayField("id")) {
+		if (displayField(PetCategory.ID)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "id";
-			lc.header = getFieldLabel("id");
+			lc.name = PetCategory.ID;
+			lc.header = getFieldLabel(PetCategory.ID);
 			lc.hidden = false;
 			columns.add(lc);
 		}
-		if (displayField("name")) {
+		if (displayField(PetCategory.NAME)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "name";
-			lc.header = getFieldLabel("name");
+			lc.name = PetCategory.NAME;
+			lc.header = getFieldLabel(PetCategory.NAME);
 			lc.hidden = false;
 			columns.add(lc);
 		}
-		if (displayField("status")) {
+		if (displayField(PetCategory.STATUS)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "status";
-			lc.header = getFieldLabel("status");
+			lc.name = PetCategory.STATUS;
+			lc.header = getFieldLabel(PetCategory.STATUS);
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "code";
@@ -117,20 +117,20 @@ public class PetCategoryListAction extends WebListAction<PetCategory> {
 			lc.format = lcf;
 			columns.add(lc);
 		}
-		if (displayField("updatedAt")) {
+		if (displayField(PetCategory.UPDATED_AT)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "updatedAt";
-			lc.header = getFieldLabel("updatedAt");
+			lc.name = PetCategory.UPDATED_AT;
+			lc.header = getFieldLabel(PetCategory.UPDATED_AT);
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "datetime";
 			lc.format = lcf;
 			columns.add(lc);
 		}
-		if (displayField("updatedBy")) {
+		if (displayField(PetCategory.UPDATED_BY)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "updatedBy";
-			lc.header = getFieldLabel("updatedBy");
+			lc.name = PetCategory.UPDATED_BY;
+			lc.header = getFieldLabel(PetCategory.UPDATED_BY);
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "expr";
@@ -150,24 +150,24 @@ public class PetCategoryListAction extends WebListAction<PetCategory> {
 	@To(value=Views.SFTL, error=Views.SFTL)
 	public Object expo_xlsx(@Param @VisitValidate QueryerEx qr) {
 		List<ListColumn> columns = new ArrayList<ListColumn>();
-		if (displayField("id")) {
+		if (displayField(PetCategory.ID)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "id";
-			lc.header = getFieldLabel("id");
+			lc.name = PetCategory.ID;
+			lc.header = getFieldLabel(PetCategory.ID);
 			lc.hidden = false;
 			columns.add(lc);
 		}
-		if (displayField("name")) {
+		if (displayField(PetCategory.NAME)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "name";
-			lc.header = getFieldLabel("name");
+			lc.name = PetCategory.NAME;
+			lc.header = getFieldLabel(PetCategory.NAME);
 			lc.hidden = false;
 			columns.add(lc);
 		}
-		if (displayField("status")) {
+		if (displayField(PetCategory.STATUS)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "status";
-			lc.header = getFieldLabel("status");
+			lc.name = PetCategory.STATUS;
+			lc.header = getFieldLabel(PetCategory.STATUS);
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "code";
@@ -175,20 +175,20 @@ public class PetCategoryListAction extends WebListAction<PetCategory> {
 			lc.format = lcf;
 			columns.add(lc);
 		}
-		if (displayField("updatedAt")) {
+		if (displayField(PetCategory.UPDATED_AT)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "updatedAt";
-			lc.header = getFieldLabel("updatedAt");
+			lc.name = PetCategory.UPDATED_AT;
+			lc.header = getFieldLabel(PetCategory.UPDATED_AT);
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "datetime";
 			lc.format = lcf;
 			columns.add(lc);
 		}
-		if (displayField("updatedBy")) {
+		if (displayField(PetCategory.UPDATED_BY)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "updatedBy";
-			lc.header = getFieldLabel("updatedBy");
+			lc.name = PetCategory.UPDATED_BY;
+			lc.header = getFieldLabel(PetCategory.UPDATED_BY);
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "expr";

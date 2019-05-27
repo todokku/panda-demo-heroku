@@ -17,7 +17,7 @@ public class PetCategoryPopupAction extends WebListAction<PetCategory> {
 	 */
 	public PetCategoryPopupAction() {
 		setType(PetCategory.class);
-		addDisplayFields(PetCategory.ID, PetCategory.NAME, PetCategory.STATUS);
+		setDisplayFields(PetCategory.ID, PetCategory.NAME, PetCategory.STATUS);
 	}
 
 

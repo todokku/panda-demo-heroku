@@ -10,7 +10,6 @@ import panda.mvc.annotation.At;
 import panda.mvc.annotation.To;
 import panda.mvc.annotation.param.Param;
 import panda.mvc.annotation.validate.VisitValidate;
-import panda.mvc.bean.Queryer;
 import panda.mvc.bean.QueryerEx;
 import panda.mvc.view.Views;
 import panda.mvc.view.util.ListColumn;
@@ -23,7 +22,7 @@ public class PetExportAction extends WebListAction<Pet> {
 	 */
 	public PetExportAction() {
 		setType(Pet.class);
-		addDisplayFields(Pet.NAME, Pet.CID, Pet.GENDER, Pet.BIRTHDAY, Pet.ORIGIN, Pet.TEMPER, Pet.HABITS, Pet.AMOUNT, Pet.PRICE, Pet.SHOP_NAME, Pet.STATUS, Pet.UPDATED_AT, Pet.UPDATED_BY);
+		setDisplayFields(Pet.NAME, Pet.CID, Pet.GENDER, Pet.BIRTHDAY, Pet.ORIGIN, Pet.TEMPER, Pet.HABITS, Pet.AMOUNT, Pet.PRICE, Pet.SHOP_NAME, Pet.STATUS, Pet.UPDATED_AT, Pet.UPDATED_BY);
 	}
 
 
@@ -47,28 +46,6 @@ public class PetExportAction extends WebListAction<Pet> {
 	 * Actions
 	 *----------------------------------------------------------------------*/
 	/**
-	 * list_json
-	 * @param qr queryer
-	 * @return result or view
-	 */
-	@At
-	@To(Views.SJSON)
-	public Object list_json(@Param @VisitValidate Queryer qr) {
-		return super.list_json(qr);
-	}
-	
-	/**
-	 * list_xml
-	 * @param qr queryer
-	 * @return result or view
-	 */
-	@At
-	@To(Views.SXML)
-	public Object list_xml(@Param @VisitValidate Queryer qr) {
-		return super.list_xml(qr);
-	}
-	
-	/**
 	 * expo_csv
 	 * @param qr queryer
 	 * @return result or view
@@ -77,24 +54,24 @@ public class PetExportAction extends WebListAction<Pet> {
 	@To(value=Views.SFTL, error=Views.SFTL)
 	public Object expo_csv(@Param @VisitValidate QueryerEx qr) {
 		List<ListColumn> columns = new ArrayList<ListColumn>();
-		if (displayField("name")) {
+		if (displayField(Pet.NAME)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "name";
-			lc.header = getFieldLabel("name");
+			lc.name = Pet.NAME;
+			lc.header = getFieldLabel(Pet.NAME);
 			lc.hidden = false;
 			columns.add(lc);
 		}
-		if (displayField("cid")) {
+		if (displayField(Pet.CID)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "cid";
-			lc.header = getFieldLabel("cid");
+			lc.name = Pet.CID;
+			lc.header = getFieldLabel(Pet.CID);
 			lc.hidden = false;
 			columns.add(lc);
 		}
-		if (displayField("gender")) {
+		if (displayField(Pet.GENDER)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "gender";
-			lc.header = getFieldLabel("gender");
+			lc.name = Pet.GENDER;
+			lc.header = getFieldLabel(Pet.GENDER);
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "code";
@@ -102,20 +79,20 @@ public class PetExportAction extends WebListAction<Pet> {
 			lc.format = lcf;
 			columns.add(lc);
 		}
-		if (displayField("birthday")) {
+		if (displayField(Pet.BIRTHDAY)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "birthday";
-			lc.header = getFieldLabel("birthday");
+			lc.name = Pet.BIRTHDAY;
+			lc.header = getFieldLabel(Pet.BIRTHDAY);
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "date";
 			lc.format = lcf;
 			columns.add(lc);
 		}
-		if (displayField("origin")) {
+		if (displayField(Pet.ORIGIN)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "origin";
-			lc.header = getFieldLabel("origin");
+			lc.name = Pet.ORIGIN;
+			lc.header = getFieldLabel(Pet.ORIGIN);
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "code";
@@ -123,10 +100,10 @@ public class PetExportAction extends WebListAction<Pet> {
 			lc.format = lcf;
 			columns.add(lc);
 		}
-		if (displayField("temper")) {
+		if (displayField(Pet.TEMPER)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "temper";
-			lc.header = getFieldLabel("temper");
+			lc.name = Pet.TEMPER;
+			lc.header = getFieldLabel(Pet.TEMPER);
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "code";
@@ -134,10 +111,10 @@ public class PetExportAction extends WebListAction<Pet> {
 			lc.format = lcf;
 			columns.add(lc);
 		}
-		if (displayField("habits")) {
+		if (displayField(Pet.HABITS)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "habits";
-			lc.header = getFieldLabel("habits");
+			lc.name = Pet.HABITS;
+			lc.header = getFieldLabel(Pet.HABITS);
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "code";
@@ -145,31 +122,31 @@ public class PetExportAction extends WebListAction<Pet> {
 			lc.format = lcf;
 			columns.add(lc);
 		}
-		if (displayField("amount")) {
+		if (displayField(Pet.AMOUNT)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "amount";
-			lc.header = getFieldLabel("amount");
+			lc.name = Pet.AMOUNT;
+			lc.header = getFieldLabel(Pet.AMOUNT);
 			lc.hidden = false;
 			columns.add(lc);
 		}
-		if (displayField("price")) {
+		if (displayField(Pet.PRICE)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "price";
-			lc.header = getFieldLabel("price");
+			lc.name = Pet.PRICE;
+			lc.header = getFieldLabel(Pet.PRICE);
 			lc.hidden = false;
 			columns.add(lc);
 		}
-		if (displayField("shopName")) {
+		if (displayField(Pet.SHOP_NAME)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "shopName";
-			lc.header = getFieldLabel("shopName");
+			lc.name = Pet.SHOP_NAME;
+			lc.header = getFieldLabel(Pet.SHOP_NAME);
 			lc.hidden = false;
 			columns.add(lc);
 		}
-		if (displayField("status")) {
+		if (displayField(Pet.STATUS)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "status";
-			lc.header = getFieldLabel("status");
+			lc.name = Pet.STATUS;
+			lc.header = getFieldLabel(Pet.STATUS);
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "code";
@@ -177,20 +154,20 @@ public class PetExportAction extends WebListAction<Pet> {
 			lc.format = lcf;
 			columns.add(lc);
 		}
-		if (displayField("updatedAt")) {
+		if (displayField(Pet.UPDATED_AT)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "updatedAt";
-			lc.header = getFieldLabel("updatedAt");
+			lc.name = Pet.UPDATED_AT;
+			lc.header = getFieldLabel(Pet.UPDATED_AT);
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "datetime";
 			lc.format = lcf;
 			columns.add(lc);
 		}
-		if (displayField("updatedBy")) {
+		if (displayField(Pet.UPDATED_BY)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "updatedBy";
-			lc.header = getFieldLabel("updatedBy");
+			lc.name = Pet.UPDATED_BY;
+			lc.header = getFieldLabel(Pet.UPDATED_BY);
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "expr";
@@ -210,24 +187,24 @@ public class PetExportAction extends WebListAction<Pet> {
 	@To(value=Views.SFTL, error=Views.SFTL)
 	public Object expo_xlsx(@Param @VisitValidate QueryerEx qr) {
 		List<ListColumn> columns = new ArrayList<ListColumn>();
-		if (displayField("name")) {
+		if (displayField(Pet.NAME)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "name";
-			lc.header = getFieldLabel("name");
+			lc.name = Pet.NAME;
+			lc.header = getFieldLabel(Pet.NAME);
 			lc.hidden = false;
 			columns.add(lc);
 		}
-		if (displayField("cid")) {
+		if (displayField(Pet.CID)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "cid";
-			lc.header = getFieldLabel("cid");
+			lc.name = Pet.CID;
+			lc.header = getFieldLabel(Pet.CID);
 			lc.hidden = false;
 			columns.add(lc);
 		}
-		if (displayField("gender")) {
+		if (displayField(Pet.GENDER)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "gender";
-			lc.header = getFieldLabel("gender");
+			lc.name = Pet.GENDER;
+			lc.header = getFieldLabel(Pet.GENDER);
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "code";
@@ -235,20 +212,20 @@ public class PetExportAction extends WebListAction<Pet> {
 			lc.format = lcf;
 			columns.add(lc);
 		}
-		if (displayField("birthday")) {
+		if (displayField(Pet.BIRTHDAY)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "birthday";
-			lc.header = getFieldLabel("birthday");
+			lc.name = Pet.BIRTHDAY;
+			lc.header = getFieldLabel(Pet.BIRTHDAY);
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "date";
 			lc.format = lcf;
 			columns.add(lc);
 		}
-		if (displayField("origin")) {
+		if (displayField(Pet.ORIGIN)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "origin";
-			lc.header = getFieldLabel("origin");
+			lc.name = Pet.ORIGIN;
+			lc.header = getFieldLabel(Pet.ORIGIN);
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "code";
@@ -256,10 +233,10 @@ public class PetExportAction extends WebListAction<Pet> {
 			lc.format = lcf;
 			columns.add(lc);
 		}
-		if (displayField("temper")) {
+		if (displayField(Pet.TEMPER)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "temper";
-			lc.header = getFieldLabel("temper");
+			lc.name = Pet.TEMPER;
+			lc.header = getFieldLabel(Pet.TEMPER);
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "code";
@@ -267,10 +244,10 @@ public class PetExportAction extends WebListAction<Pet> {
 			lc.format = lcf;
 			columns.add(lc);
 		}
-		if (displayField("habits")) {
+		if (displayField(Pet.HABITS)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "habits";
-			lc.header = getFieldLabel("habits");
+			lc.name = Pet.HABITS;
+			lc.header = getFieldLabel(Pet.HABITS);
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "code";
@@ -278,31 +255,31 @@ public class PetExportAction extends WebListAction<Pet> {
 			lc.format = lcf;
 			columns.add(lc);
 		}
-		if (displayField("amount")) {
+		if (displayField(Pet.AMOUNT)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "amount";
-			lc.header = getFieldLabel("amount");
+			lc.name = Pet.AMOUNT;
+			lc.header = getFieldLabel(Pet.AMOUNT);
 			lc.hidden = false;
 			columns.add(lc);
 		}
-		if (displayField("price")) {
+		if (displayField(Pet.PRICE)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "price";
-			lc.header = getFieldLabel("price");
+			lc.name = Pet.PRICE;
+			lc.header = getFieldLabel(Pet.PRICE);
 			lc.hidden = false;
 			columns.add(lc);
 		}
-		if (displayField("shopName")) {
+		if (displayField(Pet.SHOP_NAME)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "shopName";
-			lc.header = getFieldLabel("shopName");
+			lc.name = Pet.SHOP_NAME;
+			lc.header = getFieldLabel(Pet.SHOP_NAME);
 			lc.hidden = false;
 			columns.add(lc);
 		}
-		if (displayField("status")) {
+		if (displayField(Pet.STATUS)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "status";
-			lc.header = getFieldLabel("status");
+			lc.name = Pet.STATUS;
+			lc.header = getFieldLabel(Pet.STATUS);
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "code";
@@ -310,20 +287,20 @@ public class PetExportAction extends WebListAction<Pet> {
 			lc.format = lcf;
 			columns.add(lc);
 		}
-		if (displayField("updatedAt")) {
+		if (displayField(Pet.UPDATED_AT)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "updatedAt";
-			lc.header = getFieldLabel("updatedAt");
+			lc.name = Pet.UPDATED_AT;
+			lc.header = getFieldLabel(Pet.UPDATED_AT);
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "datetime";
 			lc.format = lcf;
 			columns.add(lc);
 		}
-		if (displayField("updatedBy")) {
+		if (displayField(Pet.UPDATED_BY)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "updatedBy";
-			lc.header = getFieldLabel("updatedBy");
+			lc.name = Pet.UPDATED_BY;
+			lc.header = getFieldLabel(Pet.UPDATED_BY);
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "expr";

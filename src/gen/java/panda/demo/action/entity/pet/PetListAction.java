@@ -11,14 +11,14 @@ import panda.mvc.annotation.validate.VisitValidate;
 import panda.mvc.bean.Queryer;
 import panda.mvc.view.Views;
 
-public abstract class PetListAction extends WebListAction<Pet> {
+@At("/pet")
+public class PetListAction extends WebListAction<Pet> {
 
 	/**
 	 * Constructor
 	 */
 	public PetListAction() {
 		setType(Pet.class);
-		addDisplayFields(Pet.ID, Pet.NAME, Pet.CID, "-icon", Pet.CNAME, Pet.GENDER, Pet.BIRTHDAY, Pet.ORIGIN, Pet.TEMPER, Pet.HABITS, Pet.AMOUNT, Pet.PRICE, Pet.SHOP_NAME, Pet.STATUS, Pet.UPDATED_AT, Pet.UPDATED_BY);
 	}
 
 
@@ -49,6 +49,7 @@ public abstract class PetListAction extends WebListAction<Pet> {
 	@At
 	@To(value=Views.SFTL, error=Views.SFTL)
 	public Object list(@Param @VisitValidate Queryer qr) {
+		setDisplayFields(Pet.ID, Pet.NAME, Pet.CID, "-icon", Pet.CNAME, Pet.GENDER, Pet.BIRTHDAY, Pet.ORIGIN, Pet.TEMPER, Pet.HABITS, Pet.AMOUNT, Pet.PRICE, Pet.SHOP_NAME, Pet.STATUS, Pet.UPDATED_AT, Pet.UPDATED_BY);
 		return super.list(qr);
 	}
 	
@@ -60,6 +61,7 @@ public abstract class PetListAction extends WebListAction<Pet> {
 	@At
 	@To(value=Views.SFTL, error=Views.SFTL)
 	public Object list_pdf(@Param @VisitValidate Queryer qr) {
+		setDisplayFields(Pet.ID, Pet.NAME, Pet.CID, "-icon", Pet.CNAME, Pet.GENDER, Pet.BIRTHDAY, Pet.ORIGIN, Pet.TEMPER, Pet.HABITS, Pet.AMOUNT, Pet.PRICE, Pet.SHOP_NAME, Pet.STATUS, Pet.UPDATED_AT, Pet.UPDATED_BY);
 		return super.list_pdf(qr);
 	}
 	
@@ -71,7 +73,44 @@ public abstract class PetListAction extends WebListAction<Pet> {
 	@At
 	@To(value=Views.SFTL, error=Views.SFTL)
 	public Object list_print(@Param @VisitValidate Queryer qr) {
+		setDisplayFields(Pet.ID, Pet.NAME, Pet.CID, "-icon", Pet.CNAME, Pet.GENDER, Pet.BIRTHDAY, Pet.ORIGIN, Pet.TEMPER, Pet.HABITS, Pet.AMOUNT, Pet.PRICE, Pet.SHOP_NAME, Pet.STATUS, Pet.UPDATED_AT, Pet.UPDATED_BY);
 		return super.list_print(qr);
+	}
+	
+	/**
+	 * list_json
+	 * @param qr queryer
+	 * @return result or view
+	 */
+	@At
+	@To(Views.SJSON)
+	public Object list_json(@Param @VisitValidate Queryer qr) {
+		setDisplayFields(Pet.NAME, Pet.CID, Pet.GENDER, Pet.BIRTHDAY, Pet.ORIGIN, Pet.TEMPER, Pet.HABITS, Pet.AMOUNT, Pet.PRICE, Pet.SHOP_NAME, Pet.STATUS, Pet.UPDATED_AT, Pet.UPDATED_BY);
+		return super.list_json(qr);
+	}
+	
+	/**
+	 * list_xml
+	 * @param qr queryer
+	 * @return result or view
+	 */
+	@At
+	@To(Views.SXML)
+	public Object list_xml(@Param @VisitValidate Queryer qr) {
+		setDisplayFields(Pet.NAME, Pet.CID, Pet.GENDER, Pet.BIRTHDAY, Pet.ORIGIN, Pet.TEMPER, Pet.HABITS, Pet.AMOUNT, Pet.PRICE, Pet.SHOP_NAME, Pet.STATUS, Pet.UPDATED_AT, Pet.UPDATED_BY);
+		return super.list_xml(qr);
+	}
+	
+	/**
+	 * list_popup
+	 * @param qr queryer
+	 * @return result or view
+	 */
+	@At
+	@To(value=Views.SFTL, error=Views.SFTL)
+	public Object list_popup(@Param @VisitValidate Queryer qr) {
+		setDisplayFields(Pet.ID, Pet.NAME, Pet.CID, Pet.CNAME, Pet.GENDER, Pet.BIRTHDAY, Pet.ORIGIN, Pet.STATUS);
+		return super.list_popup(qr);
 	}
 	
 }

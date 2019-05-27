@@ -25,7 +25,7 @@ public class PetImageBulkDeleteAction extends WebBulkAction<PetImage> {
 	 */
 	public PetImageBulkDeleteAction() {
 		setType(PetImage.class);
-		addDisplayFields(PetImage.ID, PetImage.PID, PetImage.PNAME, PetImage.IMAGE_NAME, PetImage.IMAGE_SIZE, PetImage.IMAGE_FILE, PetImage.UPDATED_AT, PetImage.UPDATED_BY);
+		setDisplayFields(PetImage.ID, PetImage.PID, PetImage.PNAME, PetImage.IMAGE_NAME, PetImage.IMAGE_SIZE, PetImage.IMAGE_FILE, PetImage.UPDATED_AT, PetImage.UPDATED_BY);
 	}
 
 	/**

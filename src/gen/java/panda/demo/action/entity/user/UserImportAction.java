@@ -15,7 +15,7 @@ public abstract class UserImportAction extends WebImportAction<User> {
 	 */
 	public UserImportAction() {
 		setType(User.class);
-		addDisplayFields(User.ID, User.NAME, User.EMAIL, User.ROLE, User.PASSWORD, User.STATUS, User.CREATED_AT, User.CREATED_BY, User.UPDATED_AT, User.UPDATED_BY);
+		setDisplayFields(User.ID, User.NAME, User.EMAIL, User.ROLE, User.PASSWORD, User.STATUS, User.CREATED_AT, User.CREATED_BY, User.UPDATED_AT, User.UPDATED_BY);
 	}
 
 

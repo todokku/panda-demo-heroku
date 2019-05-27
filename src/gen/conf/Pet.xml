@@ -149,10 +149,10 @@
 			</column>
 		</list>
 		<list name="basicCsv" extend="basicList">
-			<column name="id" display="false"/>
-			<column name="-icon" display="false"/>
+			<column name="id" generate="false"/>
+			<column name="-icon" generate="false"/>
 			<column name="cid" hidden="false"/>
-			<column name="cname" display="false"/>
+			<column name="cname" generate="false"/>
 		</list>
 		<list name="basicPopup" extend="shPopup">
 			<column name="id" sortable="true" link="true">
@@ -300,19 +300,17 @@
 			</field>
 		</input>
 	</action>
-	<action name="pet" extend="action.Pet" autoJoin="left:all" actionClass="${action.package}.pet.PetListAction" actionBaseClass="${action.baseListActionClass}" generate="true">
+	<action name="pet" auth="${action.auth}" path="${action.path}" extend="action.Pet" autoJoin="left:all" actionClass="${action.package}.pet.PetListAction" actionBaseClass="${action.baseListActionClass}" generate="true">
 		<list name="list" extend="basicList" template="${template.list}" generate="true"/>
 		<list name="list.pdf" extend="basicList" template="${template.list_pdf}" generate="true"/>
 		<list name="list.print" extend="basicList" template="${template.list_print}" generate="true"/>
-	</action>
-	<action name="pet" auth="${action.auth}" path="${action.path}" extend="action.Pet" autoJoin="left:all" actionClass="${action.package}.pet.PetExportAction" actionBaseClass="${action.baseListActionClass}" generate="true">
 		<list name="list.json" extend="basicCsv" template="${template.list_json}" generate="true"/>
 		<list name="list.xml" extend="basicCsv" template="${template.list_xml}" generate="true"/>
+		<list name="list.popup" extend="basicPopup" template="${template.list_popup}" generate="true"/>
+	</action>
+	<action name="pet" auth="${action.auth}" path="${action.path}" extend="action.Pet" autoJoin="left:all" actionClass="${action.package}.pet.PetExportAction" actionBaseClass="${action.baseListActionClass}" generate="true">
 		<list name="expo.csv" extend="basicCsv" template="${template.expo_csv}" generate="true"/>
 		<list name="expo.xlsx" extend="basicCsv" template="${template.expo_xlsx}" generate="true"/>
-	</action>
-	<action name="pet" auth="${action.auth}" path="${action.path}" extend="action.Pet" autoJoin="left:all" actionClass="${action.package}.pet.PetPopupAction" actionBaseClass="${action.baseListActionClass}" generate="true">
-		<list name="list.popup" extend="basicPopup" template="${template.list_popup}" generate="true"/>
 	</action>
 	<action name="pet" extend="action.Pet" actionClass="${action.package}.pet.PetImportAction" actionBaseClass="${action.baseImportActionClass}" generate="true">
 		<list name="import" extend="basicList" template="${template.import}" generate="true"/>

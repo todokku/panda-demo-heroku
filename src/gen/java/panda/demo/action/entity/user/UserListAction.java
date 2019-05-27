@@ -26,7 +26,7 @@ public class UserListAction extends WebListAction<User> {
 	 */
 	public UserListAction() {
 		setType(User.class);
-		addDisplayFields(User.ID, User.NAME, User.EMAIL, User.ROLE, User.STATUS, User.CREATED_AT, User.CREATED_BY, User.UPDATED_AT, User.UPDATED_BY);
+		setDisplayFields(User.ID, User.NAME, User.EMAIL, User.ROLE, User.STATUS, User.CREATED_AT, User.CREATED_BY, User.UPDATED_AT, User.UPDATED_BY);
 	}
 
 
@@ -102,31 +102,31 @@ public class UserListAction extends WebListAction<User> {
 	@To(value=Views.SFTL, error=Views.SFTL)
 	public Object expo_csv(@Param @VisitValidate QueryerEx qr) {
 		List<ListColumn> columns = new ArrayList<ListColumn>();
-		if (displayField("id")) {
+		if (displayField(User.ID)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "id";
-			lc.header = getFieldLabel("id");
+			lc.name = User.ID;
+			lc.header = getFieldLabel(User.ID);
 			lc.hidden = false;
 			columns.add(lc);
 		}
-		if (displayField("name")) {
+		if (displayField(User.NAME)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "name";
-			lc.header = getFieldLabel("name");
+			lc.name = User.NAME;
+			lc.header = getFieldLabel(User.NAME);
 			lc.hidden = false;
 			columns.add(lc);
 		}
-		if (displayField("email")) {
+		if (displayField(User.EMAIL)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "email";
-			lc.header = getFieldLabel("email");
+			lc.name = User.EMAIL;
+			lc.header = getFieldLabel(User.EMAIL);
 			lc.hidden = false;
 			columns.add(lc);
 		}
-		if (displayField("role")) {
+		if (displayField(User.ROLE)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "role";
-			lc.header = getFieldLabel("role");
+			lc.name = User.ROLE;
+			lc.header = getFieldLabel(User.ROLE);
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "code";
@@ -134,10 +134,10 @@ public class UserListAction extends WebListAction<User> {
 			lc.format = lcf;
 			columns.add(lc);
 		}
-		if (displayField("status")) {
+		if (displayField(User.STATUS)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "status";
-			lc.header = getFieldLabel("status");
+			lc.name = User.STATUS;
+			lc.header = getFieldLabel(User.STATUS);
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "code";
@@ -145,20 +145,20 @@ public class UserListAction extends WebListAction<User> {
 			lc.format = lcf;
 			columns.add(lc);
 		}
-		if (displayField("createdAt")) {
+		if (displayField(User.CREATED_AT)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "createdAt";
-			lc.header = getFieldLabel("createdAt");
+			lc.name = User.CREATED_AT;
+			lc.header = getFieldLabel(User.CREATED_AT);
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "datetime";
 			lc.format = lcf;
 			columns.add(lc);
 		}
-		if (displayField("createdBy")) {
+		if (displayField(User.CREATED_BY)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "createdBy";
-			lc.header = getFieldLabel("createdBy");
+			lc.name = User.CREATED_BY;
+			lc.header = getFieldLabel(User.CREATED_BY);
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "expr";
@@ -166,20 +166,20 @@ public class UserListAction extends WebListAction<User> {
 			lc.format = lcf;
 			columns.add(lc);
 		}
-		if (displayField("updatedAt")) {
+		if (displayField(User.UPDATED_AT)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "updatedAt";
-			lc.header = getFieldLabel("updatedAt");
+			lc.name = User.UPDATED_AT;
+			lc.header = getFieldLabel(User.UPDATED_AT);
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "datetime";
 			lc.format = lcf;
 			columns.add(lc);
 		}
-		if (displayField("updatedBy")) {
+		if (displayField(User.UPDATED_BY)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "updatedBy";
-			lc.header = getFieldLabel("updatedBy");
+			lc.name = User.UPDATED_BY;
+			lc.header = getFieldLabel(User.UPDATED_BY);
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "expr";
@@ -199,31 +199,31 @@ public class UserListAction extends WebListAction<User> {
 	@To(value=Views.SFTL, error=Views.SFTL)
 	public Object expo_xlsx(@Param @VisitValidate QueryerEx qr) {
 		List<ListColumn> columns = new ArrayList<ListColumn>();
-		if (displayField("id")) {
+		if (displayField(User.ID)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "id";
-			lc.header = getFieldLabel("id");
+			lc.name = User.ID;
+			lc.header = getFieldLabel(User.ID);
 			lc.hidden = false;
 			columns.add(lc);
 		}
-		if (displayField("name")) {
+		if (displayField(User.NAME)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "name";
-			lc.header = getFieldLabel("name");
+			lc.name = User.NAME;
+			lc.header = getFieldLabel(User.NAME);
 			lc.hidden = false;
 			columns.add(lc);
 		}
-		if (displayField("email")) {
+		if (displayField(User.EMAIL)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "email";
-			lc.header = getFieldLabel("email");
+			lc.name = User.EMAIL;
+			lc.header = getFieldLabel(User.EMAIL);
 			lc.hidden = false;
 			columns.add(lc);
 		}
-		if (displayField("role")) {
+		if (displayField(User.ROLE)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "role";
-			lc.header = getFieldLabel("role");
+			lc.name = User.ROLE;
+			lc.header = getFieldLabel(User.ROLE);
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "code";
@@ -231,10 +231,10 @@ public class UserListAction extends WebListAction<User> {
 			lc.format = lcf;
 			columns.add(lc);
 		}
-		if (displayField("status")) {
+		if (displayField(User.STATUS)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "status";
-			lc.header = getFieldLabel("status");
+			lc.name = User.STATUS;
+			lc.header = getFieldLabel(User.STATUS);
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "code";
@@ -242,20 +242,20 @@ public class UserListAction extends WebListAction<User> {
 			lc.format = lcf;
 			columns.add(lc);
 		}
-		if (displayField("createdAt")) {
+		if (displayField(User.CREATED_AT)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "createdAt";
-			lc.header = getFieldLabel("createdAt");
+			lc.name = User.CREATED_AT;
+			lc.header = getFieldLabel(User.CREATED_AT);
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "datetime";
 			lc.format = lcf;
 			columns.add(lc);
 		}
-		if (displayField("createdBy")) {
+		if (displayField(User.CREATED_BY)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "createdBy";
-			lc.header = getFieldLabel("createdBy");
+			lc.name = User.CREATED_BY;
+			lc.header = getFieldLabel(User.CREATED_BY);
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "expr";
@@ -263,20 +263,20 @@ public class UserListAction extends WebListAction<User> {
 			lc.format = lcf;
 			columns.add(lc);
 		}
-		if (displayField("updatedAt")) {
+		if (displayField(User.UPDATED_AT)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "updatedAt";
-			lc.header = getFieldLabel("updatedAt");
+			lc.name = User.UPDATED_AT;
+			lc.header = getFieldLabel(User.UPDATED_AT);
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "datetime";
 			lc.format = lcf;
 			columns.add(lc);
 		}
-		if (displayField("updatedBy")) {
+		if (displayField(User.UPDATED_BY)) {
 			ListColumn lc = new ListColumn();
-			lc.name = "updatedBy";
-			lc.header = getFieldLabel("updatedBy");
+			lc.name = User.UPDATED_BY;
+			lc.header = getFieldLabel(User.UPDATED_BY);
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "expr";
