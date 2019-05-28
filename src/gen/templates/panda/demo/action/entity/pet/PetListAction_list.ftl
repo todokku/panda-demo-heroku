@@ -100,9 +100,9 @@
 			"value": true,
 			"header": a.getFieldLabel("id"),
 			"display": a.displayField("id"),
-			"filterable": a.filterField("id"),
 			"filter": {
-				"type": "number"
+				"type": "number",
+				"enable": a.filterField("id")
 			},
 			"link": true,
 			"sortable": true,
@@ -111,10 +111,10 @@
 			"name" : "name",
 			"header": a.getFieldLabel("name"),
 			"display": a.displayField("name"),
-			"filterable": a.filterField("name"),
 			"filter": {
+				"type": "string",
 				"fixed": true,
-				"type": "string"
+				"enable": a.filterField("name")
 			},
 			"link": true,
 			"sortable": true,
@@ -123,9 +123,9 @@
 			"name" : "cid",
 			"header": a.getFieldLabel("cid"),
 			"display": a.displayField("cid"),
-			"filterable": a.filterField("cid"),
 			"filter": {
-				"type": "number"
+				"type": "number",
+				"enable": a.filterField("cid")
 			},
 			"hidden": true,
 			"tooltip": a.getFieldTooltip("cid")
@@ -143,9 +143,9 @@
 			"name" : "cname",
 			"header": a.getFieldLabel("cname"),
 			"display": a.displayField("cname"),
-			"filterable": a.filterField("cname"),
 			"filter": {
-				"type": "string"
+				"type": "string",
+				"enable": a.filterField("cname")
 			},
 			"link": { 'action': '../petcategory/view', 'params': { 'id': '%{top.cid}' } },
 			"sortable": true,
@@ -158,10 +158,10 @@
 				"codemap": consts.petGenderMap,
 				"type": "code"
 			},
-			"filterable": a.filterField("gender"),
 			"filter": {
+				"type": "checklist",
 				"list": consts.petGenderMap,
-				"type": "checklist"
+				"enable": a.filterField("gender")
 			},
 			"sortable": true,
 			"tooltip": a.getFieldTooltip("gender")
@@ -172,9 +172,9 @@
 			"format": {
 				"type": "date"
 			},
-			"filterable": a.filterField("birthday"),
 			"filter": {
-				"type": "date"
+				"type": "date",
+				"enable": a.filterField("birthday")
 			},
 			"sortable": true,
 			"tooltip": a.getFieldTooltip("birthday")
@@ -186,10 +186,10 @@
 				"codemap": consts.petOriginMap,
 				"type": "code"
 			},
-			"filterable": a.filterField("origin"),
 			"filter": {
+				"type": "select",
 				"list": consts.petOriginMap,
-				"type": "select"
+				"enable": a.filterField("origin")
 			},
 			"sortable": true,
 			"tooltip": a.getFieldTooltip("origin")
@@ -201,10 +201,10 @@
 				"codemap": consts.petTemperMap,
 				"type": "code"
 			},
-			"filterable": a.filterField("temper"),
 			"filter": {
+				"type": "checklist",
 				"list": consts.petTemperMap,
-				"type": "checklist"
+				"enable": a.filterField("temper")
 			},
 			"sortable": true,
 			"tooltip": a.getFieldTooltip("temper")
@@ -222,9 +222,9 @@
 			"name" : "amount",
 			"header": a.getFieldLabel("amount"),
 			"display": a.displayField("amount"),
-			"filterable": a.filterField("amount"),
 			"filter": {
-				"type": "number"
+				"type": "number",
+				"enable": a.filterField("amount")
 			},
 			"sortable": true,
 			"tooltip": a.getFieldTooltip("amount")
@@ -232,9 +232,9 @@
 			"name" : "price",
 			"header": a.getFieldLabel("price"),
 			"display": a.displayField("price"),
-			"filterable": a.filterField("price"),
 			"filter": {
-				"type": "number"
+				"type": "number",
+				"enable": a.filterField("price")
 			},
 			"sortable": true,
 			"tooltip": a.getFieldTooltip("price")
@@ -242,9 +242,9 @@
 			"name" : "shopName",
 			"header": a.getFieldLabel("shopName"),
 			"display": a.displayField("shopName"),
-			"filterable": a.filterField("shopName"),
 			"filter": {
-				"type": "string"
+				"type": "string",
+				"enable": a.filterField("shopName")
 			},
 			"sortable": true,
 			"tooltip": a.getFieldTooltip("shopName")
@@ -256,10 +256,10 @@
 				"codemap": consts.dataStatusMap,
 				"type": "code"
 			},
-			"filterable": a.filterField("status"),
 			"filter": {
+				"type": "checklist",
 				"list": consts.dataStatusMap,
-				"type": "checklist"
+				"enable": a.filterField("status")
 			},
 			"hidden": false,
 			"link": false,
@@ -272,9 +272,9 @@
 			"format": {
 				"type": "datetime"
 			},
-			"filterable": a.filterField("updatedAt"),
 			"filter": {
-				"type": "datetime"
+				"type": "datetime",
+				"enable": a.filterField("updatedAt")
 			},
 			"hidden": false,
 			"link": false,
@@ -288,9 +288,9 @@
 				"expr": "top.updatedByUser",
 				"type": "expr"
 			},
-			"filterable": a.filterField("updatedBy"),
 			"filter": {
-				"type": "number"
+				"type": "number",
+				"enable": a.filterField("updatedBy")
 			},
 			"hidden": false,
 			"link": false,

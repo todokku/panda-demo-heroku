@@ -28,9 +28,9 @@
 			"value": true,
 			"header": a.getFieldLabel("id"),
 			"display": a.displayField("id"),
-			"filterable": a.filterField("id"),
 			"filter": {
-				"type": "number"
+				"type": "number",
+				"enable": a.filterField("id")
 			},
 			"sortable": true,
 			"tooltip": a.getFieldTooltip("id")
@@ -39,10 +39,10 @@
 			"value": true,
 			"header": a.getFieldLabel("name"),
 			"display": a.displayField("name"),
-			"filterable": a.filterField("name"),
 			"filter": {
+				"type": "string",
 				"fixed": true,
-				"type": "string"
+				"enable": a.filterField("name")
 			},
 			"sortable": true,
 			"tooltip": a.getFieldTooltip("name")
@@ -51,9 +51,9 @@
 			"value": true,
 			"header": a.getFieldLabel("cid"),
 			"display": a.displayField("cid"),
-			"filterable": a.filterField("cid"),
 			"filter": {
-				"type": "number"
+				"type": "number",
+				"enable": a.filterField("cid")
 			},
 			"hidden": true,
 			"tooltip": a.getFieldTooltip("cid")
@@ -62,9 +62,9 @@
 			"value": true,
 			"header": a.getFieldLabel("cname"),
 			"display": a.displayField("cname"),
-			"filterable": a.filterField("cname"),
 			"filter": {
-				"type": "string"
+				"type": "string",
+				"enable": a.filterField("cname")
 			},
 			"sortable": true,
 			"tooltip": a.getFieldTooltip("cname")
@@ -73,14 +73,14 @@
 			"value": true,
 			"header": a.getFieldLabel("gender"),
 			"display": a.displayField("gender"),
-			"filterable": a.filterField("gender"),
 			"format": {
 				"codemap": consts.petGenderMap,
 				"type": "code"
 			},
 			"filter": {
+				"type": "checklist",
 				"list": consts.petGenderMap,
-				"type": "checklist"
+				"enable": a.filterField("gender")
 			},
 			"sortable": true,
 			"tooltip": a.getFieldTooltip("gender")
@@ -89,12 +89,12 @@
 			"value": true,
 			"header": a.getFieldLabel("birthday"),
 			"display": a.displayField("birthday"),
-			"filterable": a.filterField("birthday"),
 			"format": {
 				"type": "date"
 			},
 			"filter": {
-				"type": "date"
+				"type": "date",
+				"enable": a.filterField("birthday")
 			},
 			"sortable": true,
 			"tooltip": a.getFieldTooltip("birthday")
@@ -103,14 +103,14 @@
 			"value": true,
 			"header": a.getFieldLabel("origin"),
 			"display": a.displayField("origin"),
-			"filterable": a.filterField("origin"),
 			"format": {
 				"codemap": consts.petOriginMap,
 				"type": "code"
 			},
 			"filter": {
+				"type": "select",
 				"list": consts.petOriginMap,
-				"type": "select"
+				"enable": a.filterField("origin")
 			},
 			"sortable": true,
 			"tooltip": a.getFieldTooltip("origin")
@@ -119,14 +119,14 @@
 			"value": true,
 			"header": a.getFieldLabel("status"),
 			"display": a.displayField("status"),
-			"filterable": a.filterField("status"),
 			"format": {
 				"codemap": consts.dataStatusMap,
 				"type": "code"
 			},
 			"filter": {
+				"type": "radio",
 				"list": consts.dataStatusMap,
-				"type": "radio"
+				"enable": a.filterField("status")
 			},
 			"hidden": true,
 			"sortable": false,

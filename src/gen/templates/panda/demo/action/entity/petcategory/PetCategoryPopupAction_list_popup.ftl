@@ -28,9 +28,9 @@
 			"value": true,
 			"header": a.getFieldLabel("id"),
 			"display": a.displayField("id"),
-			"filterable": a.filterField("id"),
 			"filter": {
-				"type": "number"
+				"type": "number",
+				"enable": a.filterField("id")
 			},
 			"hidden": false,
 			"sortable": true,
@@ -40,10 +40,10 @@
 			"value": true,
 			"header": a.getFieldLabel("name"),
 			"display": a.displayField("name"),
-			"filterable": a.filterField("name"),
 			"filter": {
+				"type": "string",
 				"fixed": true,
-				"type": "string"
+				"enable": a.filterField("name")
 			},
 			"hidden": false,
 			"sortable": true,
@@ -53,14 +53,14 @@
 			"value": true,
 			"header": a.getFieldLabel("status"),
 			"display": a.displayField("status"),
-			"filterable": a.filterField("status"),
 			"format": {
 				"codemap": consts.dataStatusMap,
 				"type": "code"
 			},
 			"filter": {
+				"type": "radio",
 				"list": consts.dataStatusMap,
-				"type": "radio"
+				"enable": a.filterField("status")
 			},
 			"hidden": false,
 			"sortable": true,

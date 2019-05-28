@@ -100,9 +100,9 @@
 			"value": true,
 			"header": a.getFieldLabel("id"),
 			"display": a.displayField("id"),
-			"filterable": a.filterField("id"),
 			"filter": {
-				"type": "number"
+				"type": "number",
+				"enable": a.filterField("id")
 			},
 			"hidden": false,
 			"link": true,
@@ -112,9 +112,9 @@
 			"name" : "pid",
 			"header": a.getFieldLabel("pid"),
 			"display": a.displayField("pid"),
-			"filterable": a.filterField("pid"),
 			"filter": {
-				"type": "number"
+				"type": "number",
+				"enable": a.filterField("pid")
 			},
 			"hidden": false,
 			"link": { 'action': '../pet/view', 'params': { 'id': '%{top.pid}' } },
@@ -124,9 +124,9 @@
 			"name" : "pname",
 			"header": a.getFieldLabel("pname"),
 			"display": a.displayField("pname"),
-			"filterable": a.filterField("pname"),
 			"filter": {
-				"type": "string"
+				"type": "string",
+				"enable": a.filterField("pname")
 			},
 			"hidden": false,
 			"link": { 'action': '../pet/view', 'params': { 'id': '%{top.pid}' } },
@@ -136,9 +136,9 @@
 			"name" : "imageName",
 			"header": a.getFieldLabel("imageName"),
 			"display": a.displayField("imageName"),
-			"filterable": a.filterField("imageName"),
 			"filter": {
-				"type": "string"
+				"type": "string",
+				"enable": a.filterField("imageName")
 			},
 			"hidden": false,
 			"link": true,
@@ -175,9 +175,9 @@
 			"format": {
 				"type": "datetime"
 			},
-			"filterable": a.filterField("updatedAt"),
 			"filter": {
-				"type": "datetime"
+				"type": "datetime",
+				"enable": a.filterField("updatedAt")
 			},
 			"hidden": false,
 			"link": false,
@@ -191,9 +191,9 @@
 				"expr": "top.updatedByUser",
 				"type": "expr"
 			},
-			"filterable": a.filterField("updatedBy"),
 			"filter": {
-				"type": "number"
+				"type": "number",
+				"enable": a.filterField("updatedBy")
 			},
 			"hidden": false,
 			"link": false,
