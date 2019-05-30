@@ -84,6 +84,28 @@ public abstract class PetImageEditAction extends WebEditAction<PetImage> {
 	}
 
 	/**
+	 * view_json
+	 * @param key the input key
+	 * @return result
+	 */
+	@At
+	@To(Views.SJSON)
+	public Object view_json(@Param PetImage key) {
+		return super.view(key);
+	}
+
+	/**
+	 * view_xml
+	 * @param key the input key
+	 * @return result
+	 */
+	@At
+	@To(Views.SXML)
+	public Object view_xml(@Param PetImage key) {
+		return super.view(key);
+	}
+
+	/**
 	 * print
 	 * @param key the input key
 	 * @return result or view
@@ -209,6 +231,34 @@ public abstract class PetImageEditAction extends WebEditAction<PetImage> {
 	}
 
 	/**
+	 * add_json
+	 * @param data the input data
+	 * @return result
+	 */
+	@At
+	@To(Views.SJSON)
+	public Object add_json(@Param 
+			@RequiredValidate(refers="{ 'pid': 'pname', 'imageFile': '' }")
+			@VisitValidate
+			PetImage data) {
+		return super.add_execute(data, true);
+	}
+
+	/**
+	 * add_xml
+	 * @param data the input data
+	 * @return result
+	 */
+	@At
+	@To(Views.SXML)
+	public Object add_xml(@Param 
+			@RequiredValidate(refers="{ 'pid': 'pname', 'imageFile': '' }")
+			@VisitValidate
+			PetImage data) {
+		return super.add_execute(data, true);
+	}
+
+	/**
 	 * edit
 	 * @param key the input key
 	 * @return result or view
@@ -261,6 +311,34 @@ public abstract class PetImageEditAction extends WebEditAction<PetImage> {
 	}
 
 	/**
+	 * edit_json
+	 * @param data the input data
+	 * @return result
+	 */
+	@At
+	@To(Views.SJSON)
+	public Object edit_json(@Param 
+			@RequiredValidate(refers="{ 'pid': 'pname' }")
+			@VisitValidate
+			PetImage data) {
+		return super.edit_execute(data, true);
+	}
+
+	/**
+	 * edit_xml
+	 * @param data the input data
+	 * @return result
+	 */
+	@At
+	@To(Views.SXML)
+	public Object edit_xml(@Param 
+			@RequiredValidate(refers="{ 'pid': 'pname' }")
+			@VisitValidate
+			PetImage data) {
+		return super.edit_execute(data, true);
+	}
+
+	/**
 	 * delete
 	 * @param key the input key
 	 * @return result or view
@@ -281,6 +359,28 @@ public abstract class PetImageEditAction extends WebEditAction<PetImage> {
 	@TokenProtect
 	public Object delete_execute(@Param PetImage key) {
 		return super.delete_execute(key);
+	}
+
+	/**
+	 * delete_json
+	 * @param key the input key
+	 * @return result
+	 */
+	@At
+	@To(Views.SJSON)
+	public Object delete_json(@Param PetImage key) {
+		return super.delete_execute(key, true);
+	}
+
+	/**
+	 * delete_xml
+	 * @param key the input key
+	 * @return result
+	 */
+	@At
+	@To(Views.SXML)
+	public Object delete_xml(@Param PetImage key) {
+		return super.delete_execute(key, true);
 	}
 
 }

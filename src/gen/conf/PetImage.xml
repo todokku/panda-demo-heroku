@@ -105,14 +105,22 @@
 			<param name="toolbar" value="${view.toolbar}"/>
 			<param name="actions" value="${view.actions}"/>
 		</input>
+		<input name="view.json" extend="basicInput" template="${template.view_json}" generate="true"/>
+		<input name="view.xml" extend="basicInput" template="${template.view_xml}" generate="true"/>
 		<input name="print" extend="basicInput" template="${template.print}" generate="true"/>
 		<input name="copy" extend="basicAdd" template="${template.copy}" generate="true"/>
 		<input name="add" extend="basicAdd" template="${template.add}" generate="true"/>
+		<input name="add.json" extend="basicAdd" template="${template.add_json}" generate="true"/>
+		<input name="add.xml" extend="basicAdd" template="${template.add_xml}" generate="true"/>
 		<input name="edit" extend="basicInput" template="${template.edit}" generate="true"/>
+		<input name="edit.json" extend="basicInput" template="${template.edit_json}" generate="true"/>
+		<input name="edit.xml" extend="basicInput" template="${template.edit_xml}" generate="true"/>
 		<input name="delete" extend="basicInput" template="${template.delete}" generate="true">
 			<param name="toolbar" value="${delete.toolbar}"/>
 			<param name="actions" value="${delete.actions}"/>
 		</input>
+		<input name="delete.json" extend="basicInput" template="${template.delete_json}" generate="true"/>
+		<input name="delete.xml" extend="basicInput" template="${template.delete_xml}" generate="true"/>
 	</action>
 
 	<!-- resource -->

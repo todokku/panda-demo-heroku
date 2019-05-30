@@ -66,6 +66,28 @@ public abstract class PetEditAction extends WebEditAction<Pet> {
 	}
 
 	/**
+	 * view_json
+	 * @param key the input key
+	 * @return result
+	 */
+	@At
+	@To(Views.SJSON)
+	public Object view_json(@Param Pet key) {
+		return super.view(key);
+	}
+
+	/**
+	 * view_xml
+	 * @param key the input key
+	 * @return result
+	 */
+	@At
+	@To(Views.SXML)
+	public Object view_xml(@Param Pet key) {
+		return super.view(key);
+	}
+
+	/**
 	 * print
 	 * @param key the input key
 	 * @return result or view
@@ -191,6 +213,34 @@ public abstract class PetEditAction extends WebEditAction<Pet> {
 	}
 
 	/**
+	 * add_json
+	 * @param data the input data
+	 * @return result
+	 */
+	@At
+	@To(Views.SJSON)
+	public Object add_json(@Param 
+			@RequiredValidate(refers="{ 'name': '', 'cid': 'cname', 'amount': '' }")
+			@VisitValidate
+			Pet data) {
+		return super.add_execute(data, true);
+	}
+
+	/**
+	 * add_xml
+	 * @param data the input data
+	 * @return result
+	 */
+	@At
+	@To(Views.SXML)
+	public Object add_xml(@Param 
+			@RequiredValidate(refers="{ 'name': '', 'cid': 'cname', 'amount': '' }")
+			@VisitValidate
+			Pet data) {
+		return super.add_execute(data, true);
+	}
+
+	/**
 	 * edit
 	 * @param key the input key
 	 * @return result or view
@@ -243,6 +293,34 @@ public abstract class PetEditAction extends WebEditAction<Pet> {
 	}
 
 	/**
+	 * edit_json
+	 * @param data the input data
+	 * @return result
+	 */
+	@At
+	@To(Views.SJSON)
+	public Object edit_json(@Param 
+			@RequiredValidate(refers="{ 'name': '', 'cid': 'cname', 'amount': '' }")
+			@VisitValidate
+			Pet data) {
+		return super.edit_execute(data, true);
+	}
+
+	/**
+	 * edit_xml
+	 * @param data the input data
+	 * @return result
+	 */
+	@At
+	@To(Views.SXML)
+	public Object edit_xml(@Param 
+			@RequiredValidate(refers="{ 'name': '', 'cid': 'cname', 'amount': '' }")
+			@VisitValidate
+			Pet data) {
+		return super.edit_execute(data, true);
+	}
+
+	/**
 	 * delete
 	 * @param key the input key
 	 * @return result or view
@@ -263,6 +341,28 @@ public abstract class PetEditAction extends WebEditAction<Pet> {
 	@TokenProtect
 	public Object delete_execute(@Param Pet key) {
 		return super.delete_execute(key);
+	}
+
+	/**
+	 * delete_json
+	 * @param key the input key
+	 * @return result
+	 */
+	@At
+	@To(Views.SJSON)
+	public Object delete_json(@Param Pet key) {
+		return super.delete_execute(key, true);
+	}
+
+	/**
+	 * delete_xml
+	 * @param key the input key
+	 * @return result
+	 */
+	@At
+	@To(Views.SXML)
+	public Object delete_xml(@Param Pet key) {
+		return super.delete_execute(key, true);
 	}
 
 }
