@@ -1,6 +1,7 @@
 User-agent: *
 Disallow: /admin/
 Disallow: /super/
+Disallow: /task/
 Disallow: /user/
 Allow: /
 
