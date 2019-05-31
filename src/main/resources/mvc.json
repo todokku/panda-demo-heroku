@@ -30,8 +30,8 @@
 	// acceptable locale array (first element is the default)
 	"panda.locale.accepts": [ "en", "ja", "zh" ],
 
-	// url action mapping ignore case (default: false)
-	"panda.action.mapping.case.ignore": true,
+	// mvc url action mapping ignore case (default: false)
+	"panda.mvc.mapping.case.ignore": true,
 
 	// cache provider: ehcache, java(default)
 	//"panda.cache.provider": "ehcache",
