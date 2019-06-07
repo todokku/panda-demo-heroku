@@ -189,7 +189,12 @@
 		</dependency>
 		<dependency>
 			<groupId>com.github.pandafw</groupId>
-			<artifactId>panda-wear</artifactId>
+			<artifactId>panda-gems</artifactId>
+			<version>${panda.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.pandafw</groupId>
+			<artifactId>panda-gems-media</artifactId>
 			<version>${panda.version}</version>
 		</dependency>
 
