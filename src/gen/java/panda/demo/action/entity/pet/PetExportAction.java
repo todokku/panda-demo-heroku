@@ -75,7 +75,7 @@ public class PetExportAction extends WebListAction<Pet> {
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "code";
-			lcf.codemap = consts().getPetGenderMap();
+			lcf.codemap = consts().get("petGenderMap");
 			lc.format = lcf;
 			columns.add(lc);
 		}
@@ -96,7 +96,7 @@ public class PetExportAction extends WebListAction<Pet> {
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "code";
-			lcf.codemap = consts().getPetOriginMap();
+			lcf.codemap = consts().get("petOriginMap");
 			lc.format = lcf;
 			columns.add(lc);
 		}
@@ -107,7 +107,7 @@ public class PetExportAction extends WebListAction<Pet> {
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "code";
-			lcf.codemap = consts().getPetTemperMap();
+			lcf.codemap = consts().get("petTemperMap");
 			lc.format = lcf;
 			columns.add(lc);
 		}
@@ -118,7 +118,7 @@ public class PetExportAction extends WebListAction<Pet> {
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "code";
-			lcf.codemap = consts().getPetHabitMap();
+			lcf.codemap = consts().get("petHabitMap");
 			lc.format = lcf;
 			columns.add(lc);
 		}
@@ -150,7 +150,7 @@ public class PetExportAction extends WebListAction<Pet> {
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "code";
-			lcf.codemap = consts().getDataStatusMap();
+			lcf.codemap = consts().get("dataStatusMap");
 			lc.format = lcf;
 			columns.add(lc);
 		}
@@ -208,7 +208,7 @@ public class PetExportAction extends WebListAction<Pet> {
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "code";
-			lcf.codemap = consts().getPetGenderMap();
+			lcf.codemap = consts().get("petGenderMap");
 			lc.format = lcf;
 			columns.add(lc);
 		}
@@ -229,7 +229,7 @@ public class PetExportAction extends WebListAction<Pet> {
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "code";
-			lcf.codemap = consts().getPetOriginMap();
+			lcf.codemap = consts().get("petOriginMap");
 			lc.format = lcf;
 			columns.add(lc);
 		}
@@ -240,7 +240,7 @@ public class PetExportAction extends WebListAction<Pet> {
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "code";
-			lcf.codemap = consts().getPetTemperMap();
+			lcf.codemap = consts().get("petTemperMap");
 			lc.format = lcf;
 			columns.add(lc);
 		}
@@ -251,7 +251,7 @@ public class PetExportAction extends WebListAction<Pet> {
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "code";
-			lcf.codemap = consts().getPetHabitMap();
+			lcf.codemap = consts().get("petHabitMap");
 			lc.format = lcf;
 			columns.add(lc);
 		}
@@ -283,7 +283,7 @@ public class PetExportAction extends WebListAction<Pet> {
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "code";
-			lcf.codemap = consts().getDataStatusMap();
+			lcf.codemap = consts().get("dataStatusMap");
 			lc.format = lcf;
 			columns.add(lc);
 		}

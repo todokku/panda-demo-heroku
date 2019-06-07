@@ -113,7 +113,7 @@ public class PetCategoryListAction extends WebListAction<PetCategory> {
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "code";
-			lcf.codemap = consts().getDataStatusMap();
+			lcf.codemap = consts().get("dataStatusMap");
 			lc.format = lcf;
 			columns.add(lc);
 		}
@@ -171,7 +171,7 @@ public class PetCategoryListAction extends WebListAction<PetCategory> {
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "code";
-			lcf.codemap = consts().getDataStatusMap();
+			lcf.codemap = consts().get("dataStatusMap");
 			lc.format = lcf;
 			columns.add(lc);
 		}

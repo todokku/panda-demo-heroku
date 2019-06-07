@@ -11,18 +11,18 @@ import panda.mvc.util.ActionConsts;
 public class WebActionConsts extends AppActionConsts {
 
 	public Map getPetGenderMap() {
-		return this.getTextAsMap("pet-gender-map");
+		return (Map)get("petGenderMap");
 	}
 
 	public Map getPetOriginMap() {
-		return this.getTextAsMap("pet-origin-map");
+		return (Map)get("petOriginMap");
 	}
 
 	public Map getPetTemperMap() {
-		return this.getTextAsMap("pet-temper-map");
+		return (Map)get("petTemperMap");
 	}
 
 	public Map getPetHabitMap() {
-		return this.getTextAsMap("pet-habit-map");
+		return (Map)get("petHabitMap");
 	}
 }

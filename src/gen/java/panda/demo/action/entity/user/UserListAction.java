@@ -130,7 +130,7 @@ public class UserListAction extends WebListAction<User> {
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "code";
-			lcf.codemap = consts().getAuthRoleMap();
+			lcf.codemap = consts().get("authRoleMap");
 			lc.format = lcf;
 			columns.add(lc);
 		}
@@ -141,7 +141,7 @@ public class UserListAction extends WebListAction<User> {
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "code";
-			lcf.codemap = consts().getDataStatusMap();
+			lcf.codemap = consts().get("dataStatusMap");
 			lc.format = lcf;
 			columns.add(lc);
 		}
@@ -227,7 +227,7 @@ public class UserListAction extends WebListAction<User> {
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "code";
-			lcf.codemap = consts().getAuthRoleMap();
+			lcf.codemap = consts().get("authRoleMap");
 			lc.format = lcf;
 			columns.add(lc);
 		}
@@ -238,7 +238,7 @@ public class UserListAction extends WebListAction<User> {
 			lc.hidden = false;
 			ListColumn.Format lcf = new ListColumn.Format();
 			lcf.type = "code";
-			lcf.codemap = consts().getDataStatusMap();
+			lcf.codemap = consts().get("dataStatusMap");
 			lc.format = lcf;
 			columns.add(lc);
 		}

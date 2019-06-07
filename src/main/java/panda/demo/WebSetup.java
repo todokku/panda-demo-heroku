@@ -8,10 +8,6 @@ import panda.app.constant.AUTH;
 import panda.app.constant.VAL;
 import panda.app.entity.ICreatedBy;
 import panda.app.entity.IUpdatedBy;
-import panda.app.entity.Media;
-import panda.app.entity.Resource;
-import panda.app.entity.Template;
-import panda.app.media.MediaData;
 import panda.dao.Dao;
 import panda.dao.DaoClient;
 import panda.dao.entity.EntityDao;
@@ -23,6 +19,8 @@ import panda.demo.entity.PetCategory;
 import panda.demo.entity.PetImage;
 import panda.demo.entity.User;
 import panda.demo.entity.query.UserQuery;
+import panda.gems.media.entity.Media;
+import panda.gems.media.entity.MediaData;
 import panda.idx.Indexes;
 import panda.io.Settings;
 import panda.ioc.annotation.IocBean;
@@ -38,7 +36,7 @@ import panda.mvc.annotation.Modules;
 import panda.vfs.dao.DaoFileData;
 import panda.vfs.dao.DaoFileItem;
 
-@Modules(scan = true, packages = { "panda.app.action" })
+@Modules(scan = true, packages = { "panda.app.action", "panda.gems" })
 @IocBy(type = AppIocProvider.class, args = { "*default", "*json", "mvc.json" })
 @IocBean(type = Setup.class)
 public class WebSetup extends AppSetup {
@@ -56,8 +54,6 @@ public class WebSetup extends AppSetup {
 	public static final Class[] ENTITIES = {
 			DaoFileItem.class,
 			DaoFileData.class,
-			Template.class,
-			Resource.class,
 			Media.class,
 			MediaData.class,
 			User.class,

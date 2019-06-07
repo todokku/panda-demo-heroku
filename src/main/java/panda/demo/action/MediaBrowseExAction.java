@@ -1,7 +1,7 @@
 package panda.demo.action;
 
-import panda.app.action.media.MediaBrowseAction;
 import panda.app.auth.Auth;
+import panda.gems.media.action.MediaBrowseAction;
 import panda.mvc.annotation.At;
 
 

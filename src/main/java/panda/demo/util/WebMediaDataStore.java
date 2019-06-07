@@ -1,7 +1,7 @@
 package panda.demo.util;
 
-import panda.app.media.MediaDataDaoStore;
-import panda.app.media.MediaDataStore;
+import panda.gems.media.store.MediaDataDaoStore;
+import panda.gems.media.store.MediaDataStore;
 import panda.ioc.annotation.IocBean;
 
 @IocBean(type=MediaDataStore.class)

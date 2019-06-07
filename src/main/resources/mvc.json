@@ -16,11 +16,6 @@
 		"panda.demo.AppEngine"
 	],
 
-	// database resource / template
-	"panda.database.template": true,
-	"panda.database.resource": true,
-	//"panda.database.property": true,
-
 	// runtime settings (reloadable)
 	"panda.settings.runtime.files": [ "panda-demo.properties" ],
 
@@ -102,9 +97,6 @@
 	"panda.scheduler.enable": true,
 	//"panda.scheduler.name": "scheduler",
 	//"panda.scheduler.pool.size": 1,
-
-	// custom load task keys
-	// "panda.task.load.keys": [],
 
 	// cron
 	"panda.scheduler.crons": [{

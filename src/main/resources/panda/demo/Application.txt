@@ -57,38 +57,32 @@ navi-task-reset=Reset (Database & Index)
 
 
 #-----------------------------------------------------------------------------
-# auth-roles
-#-----------------------------------------------------------------------------
-auth-roles=\
-	"U": "User", \
-	"A": "Administrator", \
-	"*": "SUPER"
-
-
-#-----------------------------------------------------------------------------
 # mail exception level
 #-----------------------------------------------------------------------------
 mail-exception=warn
 
 
 #-----------------------------------------------------------------------------
-# locale
+# constants
 #-----------------------------------------------------------------------------
-locale-languages=\
+const-auth-role-map=\
+	"U": "User", \
+	"A": "Administrator", \
+	"*": "SUPER"
+
+
+const-app-locale-map=\
 	"*": "*", \
 	"en": "English", \
 	"ja": "Japanese", \
 	"zh": "Chinese"
 
 
-#-----------------------------------------------------------------------------
-# constants
-#-----------------------------------------------------------------------------
-pet-gender-map=\
+const-pet-gender-map=\
 	"F": "Female", \
 	"M": "Male"
 
-pet-origin-map=\
+const-pet-origin-map=\
 	"AF": "Afghanistan", \
 	"AX": "Åland Islands", \
 	"AL": "Albania", \
@@ -339,13 +333,13 @@ pet-origin-map=\
 	"ZM": "Zambia", \
 	"ZW": "Zimbabwe"
 
-pet-temper-map=\
+const-pet-temper-map=\
 	"F": "Ferocious", \
 	"D": "Docile", \
 	"M": "Melancholy", \
 	"I": "Irritability"
 
-pet-habit-map=\
+const-pet-habit-map=\
 	"G": "Greedy", \
 	"S": "Love to sleep", \
 	"L": "Lively", \
