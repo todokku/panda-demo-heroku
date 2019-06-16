@@ -75,9 +75,6 @@
 	// secure user age (s)
 	"panda.auth.secure.session.age": 1800,
 	
-	// auth user type
-	"panda.auth.user.type": "panda.demo.entity.User",
-
 	// auth ticket parameter name
 	//"panda.auth.ticket.param.name": "_ticket_",
 

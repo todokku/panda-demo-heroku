@@ -1,7 +1,7 @@
 package panda.demo.tool;
 
-import panda.demo.auth.WebAuthenticator;
 import panda.lang.Arrays;
+import panda.util.crypto.Digests;
 
 
 
@@ -22,7 +22,7 @@ public class HashPwd {
 		}
 		
 		for (String p : args) {
-			System.out.println(p + ": " + WebAuthenticator.hashPassword(p));
+			System.out.println(p + ": " + Digests.sha256Hex(p));
 		}
 	}
 }

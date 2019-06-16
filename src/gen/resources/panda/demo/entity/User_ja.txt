@@ -1,9 +1,0 @@
-name=ユーザー名
-
-email=メール
-
-password=パスワード
-
-role=権限
-
-

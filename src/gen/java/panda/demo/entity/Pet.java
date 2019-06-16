@@ -36,11 +36,11 @@ import panda.vfs.FileItem;
 })
 @Joins({
 	@Join(name="CN", target=PetCategory.class, keys="cid", refs="id"),
-	@Join(name="UU", target=User.class, keys="updatedBy", refs="id")
+	@Join(name="UU", target=panda.gems.users.entity.User.class, keys="updatedBy", refs="id")
 })
 public class Pet extends SUBean implements Serializable {
 
-	private static final long serialVersionUID = 1387649002L;
+	private static final long serialVersionUID = -1060145253L;
 
 	/**
 	 * Constructor
