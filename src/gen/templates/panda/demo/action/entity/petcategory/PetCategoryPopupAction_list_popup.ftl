@@ -69,7 +69,7 @@
 
 
 	<@p.listview id="petcategory_list_popup" action="./list.popup" 
-		list=result columns=_columns_ cssColumn="status"
+		list=result.list columns=_columns_ cssColumn="status"
 		headPager="true" singleSelect="true" untoggleSelect="true"
 		cssClass="p-lv-clickable" cssTable="table-hover table-striped"
 		onrowclick="$.popup().callback(plv_getRowData(this));"

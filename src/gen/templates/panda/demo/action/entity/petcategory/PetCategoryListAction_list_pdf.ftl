@@ -77,7 +77,7 @@
 		}] />
 
 	<@p.listview id="petcategory_list_pdf" action="./list.pdf" 
-		list=result columns=_columns_ cssColumn="status"
+		list=result.list columns=_columns_ cssColumn="status"
 		cssTable="table-striped" header=" " footer=" "
 	/>
 </div>
