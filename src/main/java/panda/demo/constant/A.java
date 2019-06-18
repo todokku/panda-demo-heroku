@@ -1,10 +1,8 @@
 package panda.demo.constant;
 
-import panda.app.constant.APP;
-
 /**
- * ApplicationConstants
+ * Application Constants
  */
-public interface A extends APP {
+public interface A {
 
 }

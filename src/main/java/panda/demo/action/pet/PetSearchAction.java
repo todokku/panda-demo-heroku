@@ -3,7 +3,7 @@ package panda.demo.action.pet;
 import java.util.ArrayList;
 import java.util.List;
 
-import panda.app.util.IndexArg;
+import panda.app.bean.IndexArg;
 import panda.demo.action.WebAction;
 import panda.demo.entity.Pet;
 import panda.demo.util.PetIndexer;

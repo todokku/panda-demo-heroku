@@ -1,10 +1,7 @@
 package panda.demo.constant;
 
-import panda.app.constant.RES;
-
-
 /**
- * ResourceConstants
+ * Resource Constants
  */
-public interface R extends RES {
+public interface R {
 }
