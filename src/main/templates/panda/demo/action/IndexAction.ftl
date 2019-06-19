@@ -42,10 +42,20 @@
 		<@mitem ac="/admin/users/list"      ic="icon-admin-users"          tx="navi-admin-users"/>
 		<@mitem ac="/admin/pages/list"      ic="icon-admin-pages"          tx="navi-admin-pages"/>
 		<@mitem ac="/admin/media/list"      ic="icon-admin-media"          tx="navi-admin-media"/>
+		<@mitem ac="/admin/files/list"      ic="icon-admin-files"          tx="navi-admin-files"/>
 		<div class="clearfix"></div>
 </#if>
 
-<#if assist.superUser>
+<#if assist.hasAdminRole()>
+		<hr/>
+		<@mitem ac="/admin/users/list"      ic="icon-admin-users"          tx="navi-admin-users"/>
+		<@mitem ac="/admin/pages/list"      ic="icon-admin-pages"          tx="navi-admin-pages"/>
+		<@mitem ac="/admin/media/list"      ic="icon-admin-media"          tx="navi-admin-media"/>
+		<@mitem ac="/admin/files/list"      ic="icon-admin-files"          tx="navi-admin-files"/>
+		<div class="clearfix"></div>
+</#if>
+
+<#if assist.hasSuperRole()>
 		<hr/>
 		<#include "/panda/gems/admin/super-menunav.ftl" />
 		<div class="clearfix"></div>

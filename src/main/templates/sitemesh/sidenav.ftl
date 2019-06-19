@@ -48,11 +48,12 @@
 			<@navi ap="/admin/users/"          ac="/admin/users/list"      ic="icon-admin-users"          tx="navi-admin-users"/>
 			<@navi ap="/admin/pages/"          ac="/admin/pages/list"      ic="icon-admin-pages"          tx="navi-admin-pages"/>
 			<@navi ap="/admin/media/"          ac="/admin/media/list"      ic="icon-admin-media"          tx="navi-admin-media"/>
+			<@navi ap="/admin/files/"          ac="/admin/files/list"      ic="icon-admin-files"          tx="navi-admin-files"/>
 		</ul>
 	</div>
 </div><!-- end of navi_user -->
 </#if>
 
-<#if assist.superUser>
+<#if assist.hasSuperRole()>
 	<#include "/panda/gems/admin/super-sidenav.ftl">
 </#if>
