@@ -45,12 +45,14 @@
 		<ul class="nav nav-stacked">
 			<@navi ap="/user/profile/"         ac="/user/profile/input"    ic="icon-user-profile"         tx="navi-user-profile"/>
 			<@navi ap="/user/password/change/" ac="/user/password/change/" ic="icon-user-password-change" tx="navi-user-password-change"/>
-			<@navi ap="/super/user/"           ac="/super/user/list"       ic="icon-admin-user"           tx="navi-admin-user"/>
+			<@navi ap="/admin/users/"          ac="/admin/users/list"      ic="icon-admin-users"          tx="navi-admin-users"/>
+			<@navi ap="/admin/pages/"          ac="/admin/pages/list"      ic="icon-admin-pages"          tx="navi-admin-pages"/>
+			<@navi ap="/admin/media/"          ac="/admin/media/list"      ic="icon-admin-media"          tx="navi-admin-media"/>
 		</ul>
 	</div>
 </div><!-- end of navi_user -->
 </#if>
 
 <#if assist.superUser>
-	<#include "/panda/app/super-sidenav.ftl">
+	<#include "/panda/gems/admin/super-sidenav.ftl">
 </#if>

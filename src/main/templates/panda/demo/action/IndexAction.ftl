@@ -39,13 +39,15 @@
 		<hr/>
 		<@mitem ac="/user/profile/input"    ic="icon-user-profile"         tx="navi-user-profile"/>
 		<@mitem ac="/user/password/change/" ic="icon-user-password-change" tx="navi-user-password-change"/>
-		<@mitem ac="/super/user/list"       ic="icon-admin-user"           tx="navi-admin-user"/>
+		<@mitem ac="/admin/users/list"      ic="icon-admin-users"          tx="navi-admin-users"/>
+		<@mitem ac="/admin/pages/list"      ic="icon-admin-pages"          tx="navi-admin-pages"/>
+		<@mitem ac="/admin/media/list"      ic="icon-admin-media"          tx="navi-admin-media"/>
 		<div class="clearfix"></div>
 </#if>
 
 <#if assist.superUser>
 		<hr/>
-		<#include "/panda/app/super-menunav.ftl" />
+		<#include "/panda/gems/admin/super-menunav.ftl" />
 		<div class="clearfix"></div>
 </#if>
 
