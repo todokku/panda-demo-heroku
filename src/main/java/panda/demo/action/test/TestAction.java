@@ -1,7 +1,8 @@
-package panda.demo.action;
+package panda.demo.action.test;
 
 import java.util.Map;
 
+import panda.demo.action.WebAction;
 import panda.mvc.annotation.At;
 import panda.mvc.annotation.To;
 import panda.mvc.annotation.param.Param;

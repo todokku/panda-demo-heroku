@@ -1,4 +1,4 @@
-package panda.demo.action;
+package panda.demo.action.tool;
 
 import panda.app.action.base.BaseJspAction;
 import panda.mvc.annotation.At;

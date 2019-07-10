@@ -1,4 +1,4 @@
-package panda.demo.action;
+package panda.demo.action.tool;
 
 import panda.mvc.annotation.At;
 import panda.app.action.base.BaseFileAction;

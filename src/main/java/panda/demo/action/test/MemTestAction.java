@@ -1,4 +1,4 @@
-package panda.demo.action.sample;
+package panda.demo.action.test;
 
 import java.lang.ref.Reference;
 import java.lang.ref.SoftReference;
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import panda.app.action.base.BaseTaskAction;
+import panda.app.action.work.SyncWorkAction;
 import panda.app.auth.Auth;
 import panda.app.constant.AUTH;
 import panda.lang.Arrays;
@@ -21,7 +21,7 @@ import panda.mvc.view.Views;
 
 @Auth(AUTH.ADMIN)
 @At("/memtest")
-public class MemTestAction extends BaseTaskAction {
+public class MemTestAction extends SyncWorkAction {
 	private final List<byte[]> data = new ArrayList<byte[]>(); 
 	private final List<Reference<byte[]>> refs = new ArrayList<Reference<byte[]>>(); 
 

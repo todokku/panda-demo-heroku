@@ -1,4 +1,4 @@
-package panda.demo.action;
+package panda.demo.action.tool;
 
 import panda.app.auth.Auth;
 import panda.gems.media.action.MediaBrowseAction;
