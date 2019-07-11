@@ -1,6 +1,6 @@
 package panda.demo.action.entity.petcategory;
 
-import panda.demo.action.WebEditAction;
+import panda.app.action.crud.GenericEditAction;
 import panda.demo.entity.PetCategory;
 import panda.mvc.annotation.At;
 import panda.mvc.annotation.To;
@@ -12,7 +12,7 @@ import panda.mvc.view.Views;
 import panda.net.http.HttpMethod;
 
 @At("/petcategory")
-public class PetCategoryEditAction extends WebEditAction<PetCategory> {
+public class PetCategoryEditAction extends GenericEditAction<PetCategory> {
 
 	/**
 	 * Constructor

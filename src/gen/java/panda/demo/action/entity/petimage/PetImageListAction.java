@@ -1,7 +1,7 @@
 package panda.demo.action.entity.petimage;
 
+import panda.app.action.crud.GenericListAction;
 import panda.dao.query.DataQuery;
-import panda.demo.action.WebListAction;
 import panda.demo.entity.PetImage;
 import panda.demo.entity.query.PetImageQuery;
 import panda.mvc.annotation.At;
@@ -13,7 +13,7 @@ import panda.mvc.view.Views;
 import panda.vfs.FileItem;
 
 @At("/petimage")
-public class PetImageListAction extends WebListAction<PetImage> {
+public class PetImageListAction extends GenericListAction<PetImage> {
 	/*----------------------------------------------------------------------*
 	 * Properties
 	 *----------------------------------------------------------------------*/

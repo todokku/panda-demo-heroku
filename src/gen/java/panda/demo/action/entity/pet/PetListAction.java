@@ -1,7 +1,7 @@
 package panda.demo.action.entity.pet;
 
+import panda.app.action.crud.GenericListAction;
 import panda.dao.query.DataQuery;
-import panda.demo.action.WebListAction;
 import panda.demo.entity.Pet;
 import panda.demo.entity.query.PetQuery;
 import panda.mvc.annotation.At;
@@ -12,7 +12,7 @@ import panda.mvc.bean.Queryer;
 import panda.mvc.view.Views;
 
 @At("/pet")
-public class PetListAction extends WebListAction<Pet> {
+public class PetListAction extends GenericListAction<Pet> {
 
 	/**
 	 * Constructor

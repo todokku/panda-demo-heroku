@@ -28,7 +28,7 @@ public class PetImportExAction extends PetImportAction {
 	@SuppressWarnings("unchecked")
 	private String getGender(String p) {
 		if (genders == null) {
-			genders = Collections.swapMap(consts().getPetGenderMap());
+			genders = Collections.swapMap(consts().getMap("petGenderMap"));
 		}
 		return genders.get(p);
 	}
@@ -36,7 +36,7 @@ public class PetImportExAction extends PetImportAction {
 	@SuppressWarnings("unchecked")
 	private String getHabit(String p) {
 		if (habits == null) {
-			habits = Collections.swapMap(consts().getPetHabitMap());
+			habits = Collections.swapMap(consts().getMap("petHabitMap"));
 		}
 		return habits.get(p);
 	}
@@ -44,7 +44,7 @@ public class PetImportExAction extends PetImportAction {
 	@SuppressWarnings("unchecked")
 	private String getOrigin(String p) {
 		if (origins == null) {
-			origins = Collections.swapMap(consts().getPetOriginMap());
+			origins = Collections.swapMap(consts().getMap("petOriginMap"));
 		}
 		return origins.get(p);
 	}
@@ -52,7 +52,7 @@ public class PetImportExAction extends PetImportAction {
 	@SuppressWarnings("unchecked")
 	private String getTemper(String p) {
 		if (tempers == null) {
-			tempers = Collections.swapMap(consts().getPetTemperMap());
+			tempers = Collections.swapMap(consts().getMap("petTemperMap"));
 		}
 		return tempers.get(p);
 	}

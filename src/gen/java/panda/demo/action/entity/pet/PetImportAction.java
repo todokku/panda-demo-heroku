@@ -1,6 +1,6 @@
 package panda.demo.action.entity.pet;
 
-import panda.demo.action.WebImportAction;
+import panda.app.action.crud.GenericImportAction;
 import panda.demo.entity.Pet;
 import panda.mvc.annotation.At;
 import panda.mvc.annotation.To;
@@ -8,7 +8,7 @@ import panda.mvc.annotation.TokenProtect;
 import panda.mvc.annotation.param.Param;
 import panda.mvc.view.Views;
 
-public abstract class PetImportAction extends WebImportAction<Pet> {
+public abstract class PetImportAction extends GenericImportAction<Pet> {
 
 	/**
 	 * Constructor

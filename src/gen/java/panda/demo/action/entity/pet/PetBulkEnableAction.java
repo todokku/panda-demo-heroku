@@ -1,8 +1,8 @@
 package panda.demo.action.entity.pet;
 
 import java.util.Map;
+import panda.app.action.crud.GenericBulkAction;
 import panda.dao.query.DataQuery;
-import panda.demo.action.WebBulkAction;
 import panda.demo.entity.Pet;
 import panda.demo.entity.query.PetQuery;
 import panda.mvc.annotation.At;
@@ -12,7 +12,7 @@ import panda.mvc.annotation.param.Param;
 import panda.mvc.view.Views;
 import panda.net.http.HttpMethod;
 
-public abstract class PetBulkEnableAction extends WebBulkAction<Pet> {
+public abstract class PetBulkEnableAction extends GenericBulkAction<Pet> {
 
 	/**
 	 * Constructor

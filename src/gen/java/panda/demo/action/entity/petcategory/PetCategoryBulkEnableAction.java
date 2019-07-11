@@ -1,7 +1,7 @@
 package panda.demo.action.entity.petcategory;
 
 import java.util.Map;
-import panda.demo.action.WebBulkAction;
+import panda.app.action.crud.GenericBulkAction;
 import panda.demo.entity.PetCategory;
 import panda.mvc.annotation.At;
 import panda.mvc.annotation.To;
@@ -10,7 +10,7 @@ import panda.mvc.annotation.param.Param;
 import panda.mvc.view.Views;
 import panda.net.http.HttpMethod;
 
-public abstract class PetCategoryBulkEnableAction extends WebBulkAction<PetCategory> {
+public abstract class PetCategoryBulkEnableAction extends GenericBulkAction<PetCategory> {
 
 	/**
 	 * Constructor

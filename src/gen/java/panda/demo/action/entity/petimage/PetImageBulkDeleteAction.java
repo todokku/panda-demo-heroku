@@ -1,8 +1,8 @@
 package panda.demo.action.entity.petimage;
 
 import java.util.Map;
+import panda.app.action.crud.GenericBulkAction;
 import panda.dao.query.DataQuery;
-import panda.demo.action.WebBulkAction;
 import panda.demo.entity.PetImage;
 import panda.demo.entity.query.PetImageQuery;
 import panda.mvc.annotation.At;
@@ -14,7 +14,7 @@ import panda.net.http.HttpMethod;
 import panda.vfs.FileItem;
 
 @At("/petimage")
-public class PetImageBulkDeleteAction extends WebBulkAction<PetImage> {
+public class PetImageBulkDeleteAction extends GenericBulkAction<PetImage> {
 	/*----------------------------------------------------------------------*
 	 * Properties
 	 *----------------------------------------------------------------------*/

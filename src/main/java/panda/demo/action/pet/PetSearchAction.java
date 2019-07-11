@@ -3,8 +3,8 @@ package panda.demo.action.pet;
 import java.util.ArrayList;
 import java.util.List;
 
+import panda.app.action.BaseAction;
 import panda.app.bean.IndexArg;
-import panda.demo.action.WebAction;
 import panda.demo.entity.Pet;
 import panda.demo.util.PetIndexer;
 import panda.idx.IDocument;
@@ -23,7 +23,7 @@ import panda.net.URLHelper;
 
 @At
 @To(Views.SFTL)
-public class PetSearchAction extends WebAction {
+public class PetSearchAction extends BaseAction {
 	@At("/petquery")
 	@To(Views.REDIRECT)
 	public String query(@Param("key") String key) throws Exception {

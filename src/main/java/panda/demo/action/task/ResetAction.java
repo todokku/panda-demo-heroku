@@ -5,24 +5,20 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import panda.app.action.work.SyncWorkAction;
 import panda.app.auth.Auth;
 import panda.app.constant.AUTH;
 import panda.app.index.RevisionedIndexes;
 import panda.dao.Dao;
-import panda.dao.DaoClient;
 import panda.dao.DaoIterator;
-import panda.demo.action.WebSyncWorkAction;
 import panda.demo.entity.Pet;
 import panda.demo.entity.PetCategory;
 import panda.demo.entity.PetImage;
 import panda.demo.util.PetIndexer;
-import panda.demo.util.WebActionAssist;
-import panda.demo.util.WebActionConsts;
 import panda.idx.IDocument;
 import panda.idx.Indexer;
 import panda.idx.Indexes;
 import panda.io.Streams;
-import panda.ioc.annotation.IocInject;
 import panda.lang.Arrays;
 import panda.lang.Exceptions;
 import panda.lang.Randoms;
@@ -32,29 +28,10 @@ import panda.mvc.annotation.At;
 
 @At("/task/reset")
 @Auth({ AUTH.LOCAL, AUTH.TOKEN, AUTH.SUPER })
-public class ResetAction extends WebSyncWorkAction {
-	@IocInject
-	protected DaoClient daoClient;
-	
-	/**
-	 * @return the consts
-	 */
-	@Override
-	protected WebActionConsts consts() {
-		return (WebActionConsts)super.getConsts();
-	}
-
-	/**
-	 * @return the assist
-	 */
-	@Override
-	protected WebActionAssist assist() {
-		return (WebActionAssist)super.getAssist();
-	}
-
+public class ResetAction extends SyncWorkAction {
 	@Override
 	protected void doExecute() {
-		final Dao dao = daoClient.getDao();
+		final Dao dao = getDaoClient().getDao();
 		
 		dao.exec(new Runnable() {
 			@Override
@@ -91,9 +68,9 @@ public class ResetAction extends WebSyncWorkAction {
 	private void initPets(Dao dao, long cid, String cat) {
 		String ipath = getServlet().getRealPath("/pets/");
 		
-		Object[] origins = consts().getPetOriginMap().keySet().toArray();
-		Object[] tempers = consts().getPetTemperMap().keySet().toArray();
-		Object[] habits = consts().getPetHabitMap().keySet().toArray();
+		Object[] origins = consts().getMap("petOriginMap").keySet().toArray();
+		Object[] tempers = consts().getMap("petTemperMap").keySet().toArray();
+		Object[] habits = consts().getMap("petHabitMap").keySet().toArray();
 		
 		try {
 			List<File> files = new ArrayList<File>();

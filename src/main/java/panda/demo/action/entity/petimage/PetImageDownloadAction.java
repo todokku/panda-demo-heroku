@@ -1,7 +1,7 @@
 package panda.demo.action.entity.petimage;
 
+import panda.app.action.BaseAction;
 import panda.dao.Dao;
-import panda.demo.action.WebDataAction;
 import panda.demo.constant.S;
 import panda.demo.constant.V;
 import panda.demo.entity.PetImage;
@@ -14,7 +14,7 @@ import panda.net.http.HttpStatus;
 import panda.servlet.HttpServletResponser;
 
 @At("/petimage")
-public class PetImageDownloadAction extends WebDataAction {
+public class PetImageDownloadAction extends BaseAction {
 	@At
 	public void pimage(@Param("id") Long id, @Param("pid") Long pid) throws Exception {
 		int maxage = getSettings().getPropertyAsInt(S.PETIMG_CACHE_MAXAGE, V.PETIMG_CACHE_MAXAGE);

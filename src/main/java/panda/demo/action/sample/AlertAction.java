@@ -1,6 +1,6 @@
 package panda.demo.action.sample;
 
-import panda.demo.action.WebAction;
+import panda.app.action.BaseAction;
 import panda.lang.Strings;
 import panda.mvc.ValidateException;
 import panda.mvc.annotation.At;
@@ -11,7 +11,7 @@ import panda.mvc.view.Views;
 
 @At("/")
 @To(value=Views.SFTL, error=Views.SFTL)
-public class AlertAction extends WebAction {
+public class AlertAction extends BaseAction {
 	public static class Arg {
 		private String strError;
 		private String strWarn;

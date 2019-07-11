@@ -1,6 +1,6 @@
 package panda.demo.action.entity.petcategory;
 
-import panda.demo.action.WebListAction;
+import panda.app.action.crud.GenericListAction;
 import panda.demo.entity.PetCategory;
 import panda.mvc.annotation.At;
 import panda.mvc.annotation.To;
@@ -10,7 +10,7 @@ import panda.mvc.bean.Queryer;
 import panda.mvc.view.Views;
 
 @At("/petcategory")
-public class PetCategoryPopupAction extends WebListAction<PetCategory> {
+public class PetCategoryPopupAction extends GenericListAction<PetCategory> {
 
 	/**
 	 * Constructor

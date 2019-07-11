@@ -1,7 +1,7 @@
 package panda.demo.action.entity.petcategory;
 
 import java.util.Map;
-import panda.demo.action.WebBulkAction;
+import panda.app.action.crud.GenericBulkAction;
 import panda.demo.entity.PetCategory;
 import panda.mvc.annotation.At;
 import panda.mvc.annotation.To;
@@ -11,7 +11,7 @@ import panda.mvc.view.Views;
 import panda.net.http.HttpMethod;
 
 @At("/petcategory")
-public class PetCategoryBulkDeleteAction extends WebBulkAction<PetCategory> {
+public class PetCategoryBulkDeleteAction extends GenericBulkAction<PetCategory> {
 
 	/**
 	 * Constructor

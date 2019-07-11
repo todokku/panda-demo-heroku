@@ -1,6 +1,6 @@
 package panda.demo.action.entity.petcategory;
 
-import panda.demo.action.WebImportAction;
+import panda.app.action.crud.GenericImportAction;
 import panda.demo.entity.PetCategory;
 import panda.mvc.annotation.At;
 import panda.mvc.annotation.To;
@@ -9,7 +9,7 @@ import panda.mvc.annotation.param.Param;
 import panda.mvc.view.Views;
 
 @At("/petcategory")
-public class PetCategoryImportAction extends WebImportAction<PetCategory> {
+public class PetCategoryImportAction extends GenericImportAction<PetCategory> {
 
 	/**
 	 * Constructor

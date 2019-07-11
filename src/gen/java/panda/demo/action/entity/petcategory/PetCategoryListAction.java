@@ -2,7 +2,7 @@ package panda.demo.action.entity.petcategory;
 
 import java.util.ArrayList;
 import java.util.List;
-import panda.demo.action.WebListAction;
+import panda.app.action.crud.GenericListAction;
 import panda.demo.entity.PetCategory;
 import panda.mvc.annotation.At;
 import panda.mvc.annotation.To;
@@ -14,7 +14,7 @@ import panda.mvc.view.Views;
 import panda.mvc.view.util.ListColumn;
 
 @At("/petcategory")
-public class PetCategoryListAction extends WebListAction<PetCategory> {
+public class PetCategoryListAction extends GenericListAction<PetCategory> {
 
 	/**
 	 * Constructor
