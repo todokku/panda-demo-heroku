@@ -3,4 +3,4 @@ icon=fa fa-search
 title=Pet Search
 
 pager-link-size=5
-pager-style=i<fp#nl>
+pager-style=is<fp#nl>

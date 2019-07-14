@@ -7,6 +7,7 @@
 
 	"files_path": "/files",
 	"media_path": "/media",
+	"pages_path": "/pages",
 	
 	// default resources
 	"panda.mvc.resources": [ 

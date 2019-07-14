@@ -19,13 +19,16 @@
 			</span>
 		</div>
 	</form>
+	<br>
 
 	<#include "/action-alert.ftl"/>
 
 <#if result?has_content>
 	<#include "/panda/app/view/index-link.ftl"/>
 
+<#if result?size gt 10>
 	<#include "/panda/app/view/index-topbar.ftl"/>
+</#if>
 
 	<div class="table-responsive petsearch">
 	<table class="table">

@@ -25,6 +25,7 @@
 		<div class="clearfix"></div>
 
 		<hr/>
+		<@mitem ac="/pages"       ic="icon-pages"                  tx="navi-pages"/>
 		<@mitem ac="/media"       ic="icon-media"                  tx="navi-media"/>
 		<@mitem ac="/mfupd"       ic="icon-sample-multifileupload" tx="navi-sample-multifileupload"/>
 		<@mitem ac="/alert"       ic="icon-sample-alert"           tx="navi-sample-alert"/>

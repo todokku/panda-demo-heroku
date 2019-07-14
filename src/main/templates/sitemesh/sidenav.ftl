@@ -24,6 +24,7 @@
 	</div>
 	<div class="panel-body">
 		<ul class="nav nav-stacked">
+			<@navi ap="/pages"         ac="/pages"             ic="icon-pages"                  tx="navi-pages"/>
 			<@navi ap="/media"         ac="/media"             ic="icon-media"                  tx="navi-media"/>
 			<@navi ap="/pdf"           ac="/pdf"               ic="icon-super-html2pdf"         tx="navi-super-html2pdf"/>
 			<@navi ap="/mfupd"         ac="/mfupd"             ic="icon-sample-multifileupload" tx="navi-sample-multifileupload"/>

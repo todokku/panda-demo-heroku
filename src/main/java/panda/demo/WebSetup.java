@@ -11,6 +11,7 @@ import panda.demo.entity.PetCategory;
 import panda.demo.entity.PetImage;
 import panda.gems.media.entity.Media;
 import panda.gems.media.entity.MediaData;
+import panda.gems.pages.entity.Page;
 import panda.gems.users.entity.User;
 import panda.gems.users.util.UserHelper;
 import panda.idx.Indexes;
@@ -48,6 +49,7 @@ public class WebSetup extends AppSetup {
 			DaoFileData.class,
 			Media.class,
 			MediaData.class,
+			Page.class,
 			User.class,
 			PetCategory.class,
 			Pet.class,
