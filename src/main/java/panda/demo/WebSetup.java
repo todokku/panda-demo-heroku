@@ -12,6 +12,7 @@ import panda.demo.entity.PetImage;
 import panda.gems.media.entity.Media;
 import panda.gems.media.entity.MediaData;
 import panda.gems.pages.entity.Page;
+import panda.gems.tager.entity.Tag;
 import panda.gems.users.entity.User;
 import panda.gems.users.util.UserHelper;
 import panda.idx.Indexes;
@@ -50,6 +51,7 @@ public class WebSetup extends AppSetup {
 			Media.class,
 			MediaData.class,
 			Page.class,
+			Tag.class,
 			User.class,
 			PetCategory.class,
 			Pet.class,

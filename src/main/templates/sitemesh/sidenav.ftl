@@ -26,6 +26,7 @@
 		<ul class="nav nav-stacked">
 			<@navi ap="/pages"         ac="/pages"             ic="icon-pages"                  tx="navi-pages"/>
 			<@navi ap="/media"         ac="/media"             ic="icon-media"                  tx="navi-media"/>
+			<@navi ap="/tags"          ac="/tags"              ic="icon-tags"                   tx="navi-tags"/>
 			<@navi ap="/pdf"           ac="/pdf"               ic="icon-super-html2pdf"         tx="navi-super-html2pdf"/>
 			<@navi ap="/mfupd"         ac="/mfupd"             ic="icon-sample-multifileupload" tx="navi-sample-multifileupload"/>
 			<@navi ap="/alert"         ac="/alert"             ic="icon-sample-alert"           tx="navi-sample-alert"/>
@@ -46,13 +47,13 @@
 		<ul class="nav nav-stacked">
 			<@navi ap="/user/profile/"         ac="/user/profile/input"    ic="icon-user-profile"         tx="navi-user-profile"/>
 			<@navi ap="/user/password/change/" ac="/user/password/change/" ic="icon-user-password-change" tx="navi-user-password-change"/>
-			<@navi ap="/admin/users/"          ac="/admin/users/list"      ic="icon-admin-users"          tx="navi-admin-users"/>
-			<@navi ap="/admin/pages/"          ac="/admin/pages/list"      ic="icon-admin-pages"          tx="navi-admin-pages"/>
-			<@navi ap="/admin/media/"          ac="/admin/media/list"      ic="icon-admin-media"          tx="navi-admin-media"/>
-			<@navi ap="/admin/files/"          ac="/admin/files/list"      ic="icon-admin-files"          tx="navi-admin-files"/>
 		</ul>
 	</div>
 </div><!-- end of navi_user -->
+</#if>
+
+<#if assist.hasAdminRole()>
+	<#include "/panda/gems/admin/admin-sidenav.ftl">
 </#if>
 
 <#if assist.hasSuperRole()>
