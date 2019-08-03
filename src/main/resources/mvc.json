@@ -184,7 +184,6 @@
 		"#panda.mvc.filter.DispatchFilter"
 	],
 	*/
-
 	"panda.mvc.filters": [
 		"#panda.mvc.filter.HttpDumpFilter",
 		"#panda.mvc.filter.DecodingFilter",
