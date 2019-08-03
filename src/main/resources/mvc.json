@@ -179,12 +179,19 @@
 	// default mvc filter
 	/*
 	"panda.mvc.filters": [
-		"#panda.mvc.filter.HttpDumpFilter",
 		"#panda.mvc.filter.DecodingFilter",
 		"#panda.mvc.filter.LoggingFilter",
 		"#panda.mvc.filter.DispatchFilter"
 	],
 	*/
+
+	"panda.mvc.filters": [
+		"#panda.mvc.filter.HttpDumpFilter",
+		"#panda.mvc.filter.DecodingFilter",
+		"#panda.mvc.filter.HttpsRedirectFilter",
+		"#panda.mvc.filter.LoggingFilter",
+		"#panda.mvc.filter.DispatchFilter"
+	],
 
 	// default mvc chains
 	/*
