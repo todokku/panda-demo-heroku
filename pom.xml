@@ -5,7 +5,7 @@
 	<groupId>com.github.pandafw</groupId>
 	<artifactId>panda-demo-heroku</artifactId>
 	<packaging>war</packaging>
-	<version>1.5.2</version>
+	<version>1.5.3</version>
 
 	<name>Panda Demo for Heroku</name>
 	<url>https://github.com/pandafw/panda-demo/</url>
@@ -14,7 +14,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jdk.version>1.7</jdk.version>
-		<panda.version>1.5.2-SNAPSHOT</panda.version>
+		<panda.version>1.5.3-SNAPSHOT</panda.version>
 		<log.hostname>heroku</log.hostname>
 		<log.slack.channel>#alert</log.slack.channel>
 		<log.slack.webhook>${env.LOG_SLACK_WEBHOOK}</log.slack.webhook>
