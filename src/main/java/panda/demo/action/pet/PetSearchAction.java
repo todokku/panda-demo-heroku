@@ -13,6 +13,7 @@ import panda.idx.IResult;
 import panda.idx.Indexer;
 import panda.idx.Indexes;
 import panda.lang.Strings;
+import panda.lang.time.DateTimes;
 import panda.mvc.annotation.At;
 import panda.mvc.annotation.To;
 import panda.mvc.annotation.param.Param;
@@ -49,7 +50,8 @@ public class PetSearchAction extends BaseAction {
 		IQuery query = indexer.newQuery();
 
 		query.start(arg.getPager().getStart()).limit(arg.getPager().getLimit());
-		query.field(Pet.NAME).equal().value(key);
+		query.field(Pet.NAME).eq().value(key);
+//		query.and().field(Pet.BIRTHDAY).ge().value(DateTimes.isoDateFormat().parse("2018-01-01"));
 		query.sort(Pet.BIRTHDAY, IQuery.SortType.DATE, false);
 
 		IResult ir = indexer.search(query);
