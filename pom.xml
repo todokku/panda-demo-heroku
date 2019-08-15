@@ -5,7 +5,7 @@
 	<groupId>com.github.pandafw</groupId>
 	<artifactId>panda-demo-heroku</artifactId>
 	<packaging>war</packaging>
-	<version>1.5.3</version>
+	<version>1.6.0</version>
 
 	<name>Panda Demo for Heroku</name>
 	<url>https://github.com/pandafw/panda-demo/</url>
@@ -13,8 +13,9 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jdk.version>1.7</jdk.version>
-		<panda.version>1.5.3-SNAPSHOT</panda.version>
+		<jdk.version>1.8</jdk.version>
+		<panda.version>1.6.0-SNAPSHOT</panda.version>
+		<lucene.version>7.7.2</lucene.version>
 		<log.hostname>heroku</log.hostname>
 		<log.slack.channel>#alert</log.slack.channel>
 		<log.slack.webhook>${env.LOG_SLACK_WEBHOOK}</log.slack.webhook>
@@ -239,22 +240,22 @@
 		<dependency>
 			<groupId>org.apache.lucene</groupId>
 			<artifactId>lucene-core</artifactId>
-			<version>5.5.5</version>
+			<version>${lucene.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.lucene</groupId>
 			<artifactId>lucene-queries</artifactId>
-			<version>5.5.5</version>
+			<version>${lucene.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.lucene</groupId>
 			<artifactId>lucene-queryparser</artifactId>
-			<version>5.5.5</version>
+			<version>${lucene.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.lucene</groupId>
 			<artifactId>lucene-analyzers-common</artifactId>
-			<version>5.5.5</version>
+			<version>${lucene.version}</version>
 		</dependency>
 		
 		<!-- JDBC -->
