@@ -2,8 +2,14 @@
 <html>
 <head>
 <title><#if params.k?has_content><@p.text name="lbl-search-result" escape="html"><@p.param name="key" value="%{p.k}"/></@p.text></#if></title>
+<style>
+#petsearch .form-group {
+	display: inline-block;
+	margin-bottom: 10px;
+	vertical-align: middle;
+}
+</style>
 </head>
-
 <body>
 
 <div class="p-section" id="a_search">
@@ -11,14 +17,30 @@
 		<h3><@p.i icon="icon"/> <@p.text name="title"/></h3>
 	</div>
 
-	<form id="petsearch" action="${base}/petquery" method="GET" loadmask="false" role="search">
-		<div class="input-group">
-			<@p.textfield cssClass="form-control" name="key" maxlength="80" placeholder="#(placeholder-search)"/>
-			<span class="input-group-btn">
-				<@p.submit icon="search"/>
-			</span>
-		</div>
-	</form>
+	<@p.form id="petsearch" action="/petquery" theme="bs3">
+		<@p.datepicker
+			name="ds"
+			maxlength="10"
+			size="10"
+			placeholder="#(lbl-date)"
+		/>
+		 ~ 
+		<@p.datepicker
+			name="de"
+			maxlength="10"
+			size="10"
+			/>
+		
+		<@p.textfield
+			name="key"
+			size="30"
+			ricon="search"
+			onrclick="$('#petsearch').submit()"
+			placeholder="#(placeholder-search)"
+			/>
+		<@p.submit cssStyle="display: none;"/>
+	</@p.form>
+
 	<br>
 
 	<#include "/action-alert.ftl"/>
