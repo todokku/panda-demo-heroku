@@ -5,17 +5,16 @@ import java.util.List;
 
 import panda.demo.entity.Pet;
 import panda.demo.entity.query.PetImageQuery;
+import panda.demo.util.PetIndexer;
+import panda.ioc.annotation.IocInject;
 import panda.lang.Systems;
 import panda.lang.mutable.MutableInt;
 import panda.mvc.annotation.At;
 
 @At("/pet")
 public class PetBulkDeleteExAction extends PetBulkDeleteAction {
-	/**
-	 * Constructor
-	 */
-	public PetBulkDeleteExAction() {
-	}
+	@IocInject
+	protected PetIndexer petIdx;
 
 	@Override
 	protected void deleteDataList(List<Pet> dataList, MutableInt count) {
@@ -33,5 +32,12 @@ public class PetBulkDeleteExAction extends PetBulkDeleteAction {
 		}
 		
 		super.deleteDataList(dataList, count);
+	}
+
+	@Override
+	protected void afterBulkDelete(List<Pet> dataList) {
+		super.afterBulkDelete(dataList);
+		
+		petIdx.deletePetIndex(dataList);
 	}
 }
