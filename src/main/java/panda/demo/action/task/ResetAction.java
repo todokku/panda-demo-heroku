@@ -5,19 +5,12 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import panda.app.action.work.SyncWorkAction;
 import panda.app.auth.Auth;
 import panda.app.constant.AUTH;
-import panda.app.index.RevisionedIndexes;
 import panda.dao.Dao;
-import panda.dao.DaoIterator;
 import panda.demo.entity.Pet;
 import panda.demo.entity.PetCategory;
 import panda.demo.entity.PetImage;
-import panda.demo.util.PetIndexer;
-import panda.idx.IDocument;
-import panda.idx.Indexer;
-import panda.idx.Indexes;
 import panda.io.Streams;
 import panda.lang.Arrays;
 import panda.lang.Exceptions;
@@ -28,7 +21,7 @@ import panda.mvc.annotation.At;
 
 @At("/task/reset")
 @Auth({ AUTH.LOCAL, AUTH.TOKEN, AUTH.SUPER })
-public class ResetAction extends SyncWorkAction {
+public class ResetAction extends ReindexAction {
 	@Override
 	protected void doExecute() {
 		final Dao dao = getDaoClient().getDao();
@@ -145,64 +138,11 @@ public class ResetAction extends SyncWorkAction {
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < len; i++) {
 			int x = Randoms.randInt(1, CHARS.length()) - 1;
-			sb.append(CHARS.charAt(x));
+			sb.append(CHARS.charAt(x)).append(' ');
 		}
 
+		sb.setLength(sb.length() - 1);
 		return sb.toString();
 	}
-	
-	private void initPetIndex(Dao dao) {
-		Indexes indexes = context.getIoc().get(Indexes.class);
-		if (!(indexes instanceof RevisionedIndexes)) {
-			return;
-		}
-		
-		Throwable ex = null;
-		RevisionedIndexes ridxs = (RevisionedIndexes)indexes;
-		Indexer idx = ridxs.newIndexer();
-		DaoIterator<Pet> it = dao.iterate(Pet.class);
-		try {
-			List<IDocument> docs = new ArrayList<IDocument>();
-			while (it.hasNext()) {
-				Pet p = it.next();
-				printInfo("Index Pet: " + p.getId() + " / " + p.getName());
-				
-				IDocument doc = idx.newDocument();
-				PetIndexer.document(doc, p);
-				docs.add(doc);
-				
-				if (docs.size() >= 100) {
-					idx.inserts(docs);
-					docs.clear();
-				}
-			}
-			
-			if (!docs.isEmpty()) {
-				idx.inserts(docs);
-			}
-		}
-		catch (Throwable e) {
-			ex = e;
-		}
-		finally {
-			it.close();
-		}
 
-		if (ex != null || getStatus().stop) {
-			try {
-				idx.drop();
-			}
-			catch (Throwable e) {
-				log.error("Failed to drop index: " + idx, e);
-			}
-		}
-		
-		if (ex != null) {
-			throw Exceptions.wrapThrow(ex);
-		}
-		
-		if (!getStatus().stop) {
-			ridxs.setIndexer(idx);
-		}
-	}
 }

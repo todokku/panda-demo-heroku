@@ -14,7 +14,7 @@ import panda.idx.IDocument;
 import panda.idx.IQuery;
 import panda.idx.IResult;
 import panda.idx.Indexer;
-import panda.idx.Indexes;
+import panda.idx.IndexerManager;
 import panda.lang.Strings;
 import panda.lang.time.DateTimes;
 import panda.mvc.annotation.At;
@@ -50,7 +50,7 @@ public class PetSearchAction extends BaseAction {
 			ps.put("ds", DateTimes.isoDateFormat().format(arg.ds));
 		}
 		if (arg.de != null) {
-			ps.put("de", DateTimes.isoDateFormat().format(arg.ds));
+			ps.put("de", DateTimes.isoDateFormat().format(arg.de));
 		}
 		ub.setParams(ps);
 		
@@ -67,20 +67,20 @@ public class PetSearchAction extends BaseAction {
 		arg.setKey(key);
 		assist().loadLimitParams(arg.getPager());
 
-		Indexes indexes = context.getIoc().get(Indexes.class);
+		IndexerManager indexes = context.getIoc().get(IndexerManager.class);
 		Indexer indexer = indexes.getIndexer();
 		IQuery query = indexer.newQuery();
 
 		query.start(arg.getPager().getStart()).limit(arg.getPager().getLimit());
-		query.field(Pet.NAME).eq().value(key);
+		query.field(Pet.NAME).match(key);
 		if (arg.ds != null) {
-			query.and().field(Pet.BIRTHDAY).ge().value(arg.ds);
+			query.and().field(Pet.BIRTHDAY).gt(arg.ds);
 		}
 		if (arg.de != null) {
 			Date de = DateTimes.addDays(arg.de, 1);
-			query.and().field(Pet.BIRTHDAY).lt().value(de);
+			query.and().field(Pet.BIRTHDAY).lt(de);
 		}
-		query.sort(Pet.BIRTHDAY, IQuery.SortType.DATE, false);
+		query.field(Pet.BIRTHDAY).sort(IQuery.SortType.DATE, true);
 
 		IResult ir = indexer.search(query);
 

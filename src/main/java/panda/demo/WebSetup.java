@@ -15,7 +15,7 @@ import panda.gems.pages.entity.Page;
 import panda.gems.tager.entity.Tag;
 import panda.gems.users.entity.User;
 import panda.gems.users.util.UserHelper;
-import panda.idx.Indexes;
+import panda.idx.IndexerManager;
 import panda.io.Settings;
 import panda.ioc.annotation.IocBean;
 import panda.ioc.annotation.IocInject;
@@ -43,7 +43,7 @@ public class WebSetup extends AppSetup {
 	private UserHelper userHelper;
 	
 	@IocInject
-	private Indexes indexes;
+	private IndexerManager indexes;
 	
 	public static final Class[] ENTITIES = {
 			DaoFileItem.class,

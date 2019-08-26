@@ -54,6 +54,7 @@ icon-sample-ftltags=fa fa-code
 icon-sample-jsptags=fa fa-code
 
 navi-task-reset=Reset (Database & Index)
+navi-task-reindex=Rebuild Index
 
 
 #-----------------------------------------------------------------------------

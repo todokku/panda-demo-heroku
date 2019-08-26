@@ -33,6 +33,7 @@
 			<@navi ap="/ftltags"       ac="/ftltags"           ic="icon-sample-ftltags"         tx="navi-sample-ftltags"/>
 			<@navi ap="/jsptags"       ac="/jsptags"           ic="icon-sample-jsptags"         tx="navi-sample-jsptags"/>
 			<@navi ap="/memtest"       ac="/memtest"           ic="icon-sample-memtest"         tx="navi-sample-memtest"/>
+			<@navi ap="/task/reindex"  ac="/task/reindex"      ic="icon-reset"                  tx="navi-task-reindex"/>
 			<@navi ap="/task/reset"    ac="/task/reset"        ic="icon-reset"                  tx="navi-task-reset"/>
 		</ul>
 	</div>

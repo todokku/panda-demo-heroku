@@ -34,6 +34,7 @@
 		<@mitem ac="/ftltags"     ic="icon-sample-ftltags"         tx="navi-sample-ftltags"/>
 		<@mitem ac="/jsptags"     ic="icon-sample-jsptags"         tx="navi-sample-jsptags"/>
 		<@mitem ac="/memtest"     ic="icon-sample-memtest"         tx="navi-sample-memtest"/>
+		<@mitem ac="/task/reindex"ic="icon-reindex"                tx="navi-task-reindex"/>
 		<@mitem ac="/task/reset"  ic="icon-reset"                  tx="navi-task-reset"/>
 		<div class="clearfix"></div>
 
