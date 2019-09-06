@@ -141,54 +141,21 @@ blockquote {
 	padding: 8px 8px 10px 60px;
 	margin-left: 10px;
 }
-.navbar-default .navbar-text {
-	position: absolute;
+.navbar-default .site-desc {
+	color: #777;
 	font-size: 12px;
 	font-style: italic;
 	font-family: verdana;
-	margin: 30px 0 0 60px;
+	margin: 30px 0 0 45px;
+	position: absolute;
 	white-space: nowrap;
-}
-#site_search {
-	padding: 0 80px;
-	width: 100%;
-}
-#site_search .input-group {
-	border-bottom: solid 1px #888;
-	display: inline-block;
-	padding: 10px 0 0 0;
-	width: 100%;
-	white-space: nowrap;
-}
-#site_search .input-group .input-group-btn {
-	display: inline-block;
-	margin-left: -30px;
-}
-#site_search .input-group .input-group-btn button {
-	border: none;
-	background: transparent;
-}
-#site_search .input-group input[type="text"] {
-	background: transparent;
-	border: none;
-	box-shadow: none;
-	padding-right: 30px;
-	width: 100%;
 }
 @media (max-width: 767px) {
 	.navbar-default .navbar-nav {
 		margin: 0;
 	}
-}
-@media (min-width: 768px) {
-	.navbar-default .navbar-header {
-		width: 50%;
-	}
-	.navbar-default .navbar-text {
-		margin: 30px 0 0 45px;
-	}
-	#site_search {
-		padding: 0 0 0 80px;
+	.navbar-default .site-desc {
+		margin: 30px 0 0 60px;
 	}
 }
 
