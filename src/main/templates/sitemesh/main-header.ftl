@@ -16,7 +16,10 @@
 					<ul class="dropdown-menu">
 					<#assign _ml = consts.appLocaleMap />
 					<#list _ml?keys as _l><#if _l != '*'><#assign _lh = _ml[_l]?html />
-						<li><a class="site-lang" href="javascript:s_setLang('${_l}');"><img src="${base}/site/img/lang/${_l}.png" alt="${_lh}" title="${_lh}"/> ${_lh}</a></li>
+						<li><a class="site-lang" href="javascript:s_setLang('${_l}');">
+							${_lh} <img src="${base}/site/img/lang/${_l}.png" alt="${_lh}" title="${_lh}"/>
+							</a>
+						</li>
 					</#if></#list>
 					</ul>
 				</li>
