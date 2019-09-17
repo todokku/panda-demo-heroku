@@ -1,5 +1,6 @@
 package panda.demo;
 
+import panda.app.AppLaunch;
 import panda.io.Files;
 
 public class AppMain {
@@ -15,6 +16,8 @@ public class AppMain {
 					"--keystorePass", "trustme",
 					"--keystoreType", "PKCS12",
 //					"--path", "pdemo",
+					"--relaxedPathChars", "[]|{}&",
+					"--relaxedQueryChars", "[]|{}&",
 					"--temp-directory", "out/tomcat",
 					"--uri-encoding", "UTF-8",
 					"--use-body-encoding-for-uri",
