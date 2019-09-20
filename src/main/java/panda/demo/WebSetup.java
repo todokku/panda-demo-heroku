@@ -27,7 +27,7 @@ import panda.mvc.annotation.Modules;
 import panda.vfs.dao.DaoFileData;
 import panda.vfs.dao.DaoFileItem;
 
-@Modules(scan = true, packages = { "panda.app.action", "panda.gems" })
+@Modules(scan = true, packages = { "panda.app.action", "panda.gems", "panda.gae" })
 @IocBy(type = AppIocProvider.class, args = { "*default", "*json", "mvc.json" })
 @IocBean(type = Setup.class)
 public class WebSetup extends AppSetup {
