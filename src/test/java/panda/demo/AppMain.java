@@ -10,8 +10,8 @@ public class AppMain {
 
 			System.setProperty("tomcat.util.http.parser.HttpParser.requestTargetAllow", "|{}&");
 			AppLaunch.main(new String[] { 
-					"--port", "80",
-					"--sslport", "443",
+					"--port", "8080",
+					"--sslport", "8443",
 					"--keystoreFile", "web/WEB-INF/keystore.pfx",
 					"--keystorePass", "trustme",
 					"--keystoreType", "PKCS12",
