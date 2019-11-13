@@ -4,5 +4,5 @@
 <meta property="s:google_analytics" content="${(s['google.analytics'])!}"></meta>
 <title><#if title?has_content>${title} | </#if><@p.text name="site-name"/></title>
 <link rel="shortcut icon" href="${base}/favicon.ico"/>
-<@p.link css="true" panda="true" stylesheets=(vars.stylesheets)![] version="${(s['prj.revision'])!}"/>
+<@p.link css="true" panda="true" flagiconcss="true" stylesheets=(vars.stylesheets)![] version="${(s['prj.revision'])!}"/>
 <link href="${base}/site/site.css?v=${(s['prj.revision'])!}" rel="stylesheet" type="text/css"/>

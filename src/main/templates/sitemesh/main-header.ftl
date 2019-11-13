@@ -17,7 +17,8 @@
 					<#assign _ml = consts.appLocaleMap />
 					<#list _ml?keys as _l><#if _l != '*'><#assign _lh = _ml[_l]?html />
 						<li><a class="site-lang" href="javascript:s_setLang('${_l}');">
-							${_lh} <img src="${base}/site/img/lang/${_l}.png" alt="${_lh}" title="${_lh}"/>
+							${_lh}
+							<i class="flag-icon flag-icon-${assist.getCountryByLanguage(_l)}"></i>
 							</a>
 						</li>
 					</#if></#list>
