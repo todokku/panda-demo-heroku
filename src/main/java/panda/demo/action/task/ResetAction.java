@@ -11,7 +11,7 @@ import panda.dao.Dao;
 import panda.demo.entity.Pet;
 import panda.demo.entity.PetCategory;
 import panda.demo.entity.PetImage;
-import panda.io.Streams;
+import panda.io.Files;
 import panda.lang.Arrays;
 import panda.lang.Exceptions;
 import panda.lang.Randoms;
@@ -120,7 +120,7 @@ public class ResetAction extends ReindexAction {
 				pi.setPid(p.getId());
 				pi.setImageName(f.getName());
 				pi.setImageSize((int)f.length());
-				pi.setImageData(Streams.toByteArray(f));
+				pi.setImageData(Files.readToBytes(f));
 				assist().setCreatedByFields(pi);
 				
 				dao.insert(pi);
