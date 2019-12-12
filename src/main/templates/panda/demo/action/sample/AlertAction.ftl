@@ -21,7 +21,9 @@
 			<@p.textfield name="strCheck" label="ValidateException" placeholder="input validate exception message ..."/>
 			<@p.textfield name="strExcep" label="Exception" placeholder="input exception message ..."/>
 		</fieldset>
-		<@p.submit btype="danger" value="Submit"/>
+		<@p.div>
+			<@p.submit btype="danger" value="Submit"/>
+		</@p.div>
 	</@p.form>
 	</div>
 	
@@ -52,6 +54,7 @@
 			return 'info';
 		}
 	</script>
+	<@p.set var="jscripts" value=[ "${statics!}/notifyjs/jquery.ui.notify.min.js" ]/>
 </body>
 </html>
 
