@@ -35,7 +35,7 @@
 			dnloadAction="%{b['files_path'] + '/download'}"
 			dnloadName="file"
 		/>
-		<@p.textarea key="textarea" maxlength="100" rows="5"/>
+		<@p.textarea key="textarea" maxlength="100" autosize="true"/>
 		<@p.viewfield key="htmlviewer" format="html"/>
 		<@p.htmleditor key="summernote" height="200" mediaAction="%{b.media_path + '/browse.popup'}"/>
 		<@p.htmleditor key="cleditor" editor="cleditor" rows="25"/>
