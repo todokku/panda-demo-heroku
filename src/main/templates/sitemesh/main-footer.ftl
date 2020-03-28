@@ -1,7 +1,7 @@
 <div id="ads_foot">
 	<#include "/ads/google-adsbar.ftl"/>
 </div>
-<div id="footer" class="navbar navbar-default">
+<div id="footer" class="navbar navbar-default navbar-light bg-light border-top">
 	<div class="container">
 		<!--div id="footer_navi"></div-->
 		<div id="footer_site">

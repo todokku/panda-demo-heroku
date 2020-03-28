@@ -1,7 +1,7 @@
-<div id="header" class="navbar navbar-default navbar-fixed-top">
+<div id="header" class="navbar navbar-default navbar-fixed-top navbar-light bg-light navbar-expand-lg border-bottom fixed-top">
 	<div class="container">
 		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar_main">
+			<button type="button" class="navbar-toggle navbar-toggler" data-toggle="collapse" data-target="#navbar_main">
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
@@ -9,7 +9,7 @@
 			<a href="${base}/" class="navbar-brand"><@p.text name="site-name"/></a> 
 			<p class="site-desc"><@p.text name="site-desc"/></p>
 		</div>
-		<div class="navbar-collapse collapse" id="navbar_main">
+		<div class="navbar-collapse collapse mr-auto justify-content-end" id="navbar_main">
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#"><@p.text name="navi-language"/> <span class="caret"></span></a>
