@@ -5,7 +5,7 @@
 	<groupId>com.github.pandafw</groupId>
 	<artifactId>panda-demo-heroku</artifactId>
 	<packaging>war</packaging>
-	<version>1.6.1</version>
+	<version>1.8.0</version>
 
 	<name>Panda Demo for Heroku</name>
 	<url>https://github.com/pandafw/panda-demo/</url>
@@ -14,7 +14,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jdk.version>1.8</jdk.version>
-		<panda.version>1.6.1-SNAPSHOT</panda.version>
+		<panda.version>1.8.0-SNAPSHOT</panda.version>
 		<lucene.version>7.7.2</lucene.version>
 		<poi.version>4.1.0</poi.version>
 		<postgresql.version>42.2.6</postgresql.version>
