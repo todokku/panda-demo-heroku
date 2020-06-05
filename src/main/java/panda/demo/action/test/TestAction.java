@@ -4,34 +4,28 @@ import java.io.IOException;
 import java.util.Map;
 
 import panda.app.action.BaseAction;
-import panda.io.MimeTypes;
 import panda.mvc.annotation.At;
 import panda.mvc.annotation.To;
 import panda.mvc.annotation.param.Param;
-import panda.mvc.view.Views;
-import panda.servlet.HttpServletResponser;
 
 
 @At("/test")
 public class TestAction extends BaseAction {
 	@At
-	@To(Views.SJSON)
-	public void json(@Param Map m) {
+	@To("sjson:{'includeParams':true}")
+	public Object json(@Param Map m) {
+		return m;
 	}
 
 	@At
-	@To(Views.SXML)
-	public void xml(@Param Map m) {
+	@To("sxml:{'includeParams':true}")
+	public Object xml(@Param Map m) {
+		return m;
 	}
 
 	@At
-	@To(Views.NONE)
-	public void echo(@Param("c") String cs, @Param("t") String txt) throws IOException {
-		HttpServletResponser hsrs = new HttpServletResponser(getRequest(), getResponse());
-		hsrs.setContentType(MimeTypes.TEXT_HTML);
-		hsrs.setMaxAge(0);
-		hsrs.setCharset(cs);
-		hsrs.writeHeader();
-		hsrs.writeText(txt);
+	@To("raw:{'encoding':'${params.c}'}")
+	public Object echo(@Param("c") String cs, @Param("t") String txt) throws IOException {
+		return txt;
 	}
 }
